@@ -1,0 +1,28 @@
+{
+  "name": "automs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bin/index.js",
+  "bin": {
+    "automs": "bin/index.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "ora": "^5.4.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "bin"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "engines": {
+    "node": ">=12.15.0"
+  },
+  "author": "eason.chiu@atzuche",
+  "repository": "git@github.com:aotuzuche/automs.git",
+  "license": "MIT"
+}
