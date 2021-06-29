@@ -8,16 +8,21 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "dotenv": "^10.0.0",
+    "dotenv-expand": "^5.1.0",
     "eslint": "^7.29.0",
     "eslint-config-atzuche": "^3.0.3",
     "eslint-plugin-prettier": "^3.4.0",
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
     "ora": "^5.4.1",
-    "prettier": "^2.3.2"
+    "prettier": "^2.3.2",
+    "webpack": "^5.41.0",
+    "webpack-dev-server": "^3.11.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:b": "cd ./example && node ../bin/index.js build",
+    "test:s": "cd ./example && node ../bin/index.js start",
     "eslint": "eslint --ext **/*.js"
   },
   "files": [
