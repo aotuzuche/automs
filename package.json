@@ -8,14 +8,31 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "ora": "^5.4.1"
+    "eslint": "^7.29.0",
+    "eslint-config-atzuche": "^3.0.3",
+    "eslint-plugin-prettier": "^3.4.0",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
+    "ora": "^5.4.1",
+    "prettier": "^2.3.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "eslint": "eslint --ext **/*.js"
   },
   "files": [
     "bin"
   ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js}": [
+      "yarn eslint"
+    ]
+  },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

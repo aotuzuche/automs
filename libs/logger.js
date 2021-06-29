@@ -8,7 +8,7 @@ class Logger {
   }
 
   log(msg) {
-    this.baseLog(msg === undefined ? '' : msg)
+    this.baseLog(msg === void 0 ? '' : msg)
   }
 
   error(message) {

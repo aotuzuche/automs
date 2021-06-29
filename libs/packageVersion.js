@@ -5,7 +5,7 @@ const Paths = require('./paths')
 
 const PackageVersion = {
   // 获取某个包在npm淘宝镜像上的最新版本
-  npm: (name) => {
+  npm: name => {
     return new Promise(resolve => {
       fetch(`https://registry.npm.taobao.org/${name}/latest`)
         .then(res => res.json())
@@ -15,9 +15,9 @@ const PackageVersion = {
   },
 
   // 获取某个包在本地的版本
-  local: (name) => {
+  local: name => {
     const p = path.join(Paths.appNodeModules, name, 'package.json')
-    
+
     const exist = fs.existsSync(p)
     if (!exist) {
       return ''
@@ -28,7 +28,7 @@ const PackageVersion = {
   },
 
   // 比较版本
-  compare: async (name) => {
+  compare: async name => {
     const npm = await PackageVersion.npm(name)
     const local = PackageVersion.local(name)
 
