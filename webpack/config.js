@@ -4,6 +4,8 @@ const TerserPlugin = require('terser-webpack-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const PnpWebpackPlugin = require('pnp-webpack-plugin')
 const ModuleScopePlugin = require('./plugins/ModuleScopePlugin')
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+const { transformer, formatter } = require('./libs/index')
 
 const webpackConfig = mode => {
   const isEnvDevelopment = mode === 'development'
@@ -182,7 +184,12 @@ const webpackConfig = mode => {
       ].filter(Boolean),
     },
 
-    plugins: [],
+    plugins: [
+      new FriendlyErrorsWebpackPlugin({
+        additionalTransformers: [transformer],
+        additionalFormatters: [formatter],
+      }),
+    ],
 
     optimization: {
       // 告知 webpack 使用 TerserPlugin 或其它在 optimization.minimizer 定义的插件压缩 bundle。

@@ -1,6 +1,8 @@
 const webpack = require('webpack')
+const fs = require('fs-extra')
 const webpackConfig = require('../webpack/config')
 const logger = require('../libs/logger')
+const paths = require('../libs/paths')
 
 const main = async () => {
   process.env.BABEL_ENV = 'production'
@@ -16,7 +18,9 @@ const main = async () => {
       logger.succeed(res)
       console.log('')
     })
-    .catch(err => logger.error(err.message))
+    .catch(() => {
+      fs.remove(paths.appBuild)
+    })
 }
 
 const build = () => {
@@ -27,6 +31,10 @@ const build = () => {
     compiler.run((err, stats) => {
       if (err) {
         return reject(err)
+      }
+
+      if (stats.hasErrors() && stats.toJson().errorsCount) {
+        return reject(stats.toJson().errors[0])
       }
 
       resolve(stats.toString({ chunks: false, colors: true }))
