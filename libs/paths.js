@@ -30,10 +30,22 @@ const resolveModule = (resolveFn, filePath) => {
   return resolveFn(`${filePath}.js`)
 }
 
-const Paths = {
+const ensureSlash = (inputPath = '', needsSlash) => {
+  const hasSlash = inputPath.endsWith('/')
+  if (hasSlash && !needsSlash) {
+    return inputPath.substr(0, inputPath.length - 1)
+  } else if (!hasSlash && needsSlash) {
+    return `${inputPath}/`
+  } else {
+    return inputPath
+  }
+}
+
+const paths = {
   dotenv: resolveApp('.env'),
   appPath: resolveApp('.'),
   appBuild: resolveApp(process.env.BUILD_PATH || 'build'),
+  appPublishUrl: ensureSlash(process.env.PUBLIC_URL, true),
   appPublic: resolveApp('pupblic'),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
@@ -42,4 +54,4 @@ const Paths = {
   appNodeModules: resolveApp('node_modules'),
 }
 
-module.exports = Paths
+module.exports = paths

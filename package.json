@@ -8,6 +8,7 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "css-minimizer-webpack-plugin": "^3.0.2",
     "dotenv": "^10.0.0",
     "dotenv-expand": "^5.1.0",
     "eslint": "^7.29.0",
@@ -16,7 +17,10 @@
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
     "ora": "^5.4.1",
+    "pnp-webpack-plugin": "^1.6.4",
     "prettier": "^2.3.2",
+    "source-map-loader": "^3.0.0",
+    "url-loader": "^4.1.1",
     "webpack": "^5.41.0",
     "webpack-dev-server": "^3.11.2"
   },

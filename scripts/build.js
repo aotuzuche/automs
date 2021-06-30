@@ -10,10 +10,13 @@ const main = async () => {
     throw err
   })
 
-  build().then(res => {
-    console.log(process.env.BUILD_PATH, 'BUILD_PATH')
-    logger.succeed('build complete.')
-  })
+  build()
+    .then(res => {
+      console.log('')
+      logger.succeed(res)
+      console.log('')
+    })
+    .catch(err => logger.error(err.message))
 }
 
 const build = () => {
@@ -26,7 +29,7 @@ const build = () => {
         return reject(err)
       }
 
-      resolve(stats)
+      resolve(stats.toString({ chunks: false, colors: true }))
     })
   })
 }
