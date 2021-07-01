@@ -7,6 +7,7 @@
     "automs": "bin/index.js"
   },
   "dependencies": {
+    "ali-oss": "^6.15.2",
     "chalk": "^4.1.1",
     "cross-spawn": "^7.0.3",
     "css-minimizer-webpack-plugin": "^3.0.2",
@@ -31,8 +32,7 @@
     "prettier": "^2.3.2"
   },
   "scripts": {
-    "test:b": "cd ./example && node ../bin/index.js build",
-    "test:s": "cd ./example && node ../bin/index.js start",
+    "test": "cd ./example && node ../bin/index.js build test",
     "eslint": "eslint --ext **/*.js"
   },
   "files": [

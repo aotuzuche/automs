@@ -1,7 +1,7 @@
-const fs = require('fs')
+const fs = require('fs-extra')
 const fetch = require('node-fetch')
 const path = require('path')
-const Paths = require('./paths')
+const paths = require('./paths')
 
 const PackageVersion = {
   // 获取某个包在npm淘宝镜像上的最新版本
@@ -16,15 +16,15 @@ const PackageVersion = {
 
   // 获取某个包在本地的版本
   local: name => {
-    const p = path.join(Paths.appNodeModules, name, 'package.json')
+    const p = path.join(paths.appNodeModules, name, 'package.json')
 
     const exist = fs.existsSync(p)
     if (!exist) {
       return ''
     }
 
-    const f = String(fs.readFileSync(p))
-    return JSON.parse(f || '{}').version || ''
+    const json = fs.readJsonSync(p)
+    return json.version || ''
   },
 
   // 比较版本

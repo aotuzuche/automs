@@ -18,7 +18,12 @@ const main = async () => {
       logger.succeed(res)
       console.log('')
     })
-    .catch(() => {
+    .catch(err => {
+      // 有moduleName时，FriendlyErrorsWebpackPlugin会帮我们显示错误信息
+      // 这里只打印其他错误内容
+      if (err && !err.moduleName) {
+        logger.error(err.message)
+      }
       fs.remove(paths.appBuild)
     })
 }

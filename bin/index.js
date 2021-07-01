@@ -1,21 +1,16 @@
-const spawn = require('cross-spawn')
 const logger = require('../libs/logger')
-const path = require('path')
+const spawn = require('../libs/spawn')
 require('../libs/dotenv')
 
 const main = args => {
   const script = args[0]
 
-  if (!['build', 'start'].includes(script)) {
+  if (!['build', 'start', 'doctor'].includes(script)) {
     logger.errorWithExit(`Unknow script '${script}'`)
     return
   }
 
-  const result = spawn.sync(
-    process.execPath,
-    [path.resolve('..', 'scripts', script), args.slice(1)],
-    { stdio: 'inherit' },
-  )
+  const result = spawn.bin(script, args.slice(1))
 
   if (result.signal) {
     if (result.signal === 'SIGKILL') {

@@ -46,7 +46,7 @@ const paths = {
   appPath: resolveApp('.'),
   appBuild: resolveApp(process.env.BUILD_PATH || 'build'),
   appPublishUrl: ensureSlash(process.env.PUBLIC_URL, true),
-  appPublic: resolveApp('pupblic'),
+  appPublic: resolveApp('src/public'),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
   appIndexJs: resolveModule(resolveApp, 'src/index'),
