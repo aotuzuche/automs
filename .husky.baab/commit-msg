@@ -1,0 +1,6 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo '>>> husky hooks: commit-msg'
+
+node ./verify-commit-msg.js $1
