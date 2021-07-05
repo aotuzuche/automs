@@ -3,4 +3,4 @@
 
 echo '>>> husky hooks: pre-commit'
 
-yarn lint-staged
+npx lint-staged

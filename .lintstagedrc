@@ -1,0 +1,6 @@
+{
+  "*.{js}": [
+    "yarn prettier",
+    "yarn eslint"
+  ]
+}

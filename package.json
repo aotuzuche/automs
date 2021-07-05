@@ -44,7 +44,6 @@
     "test": "cd ./example && node ../bin/index.js deploy test",
     "eslint": "eslint --ext .js, bin libs scripts webpack scripts",
     "prettier": "prettier -c --write '**/*'",
-    "lint-staged": "lint-staged",
     "prepare": "husky install"
   },
   "files": [
@@ -54,12 +53,6 @@
     "scripts",
     "webpack"
   ],
-  "lint-staged": {
-    "*.{js}": [
-      "yarn prettier",
-      "yarn eslint"
-    ]
-  },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
