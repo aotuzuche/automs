@@ -1,6 +1,6 @@
 const logger = require('../libs/logger')
 const spawn = require('../libs/spawn')
-require('../libs/dotenv')
+const env = require('../libs/dotenv')
 
 const main = args => {
   const script = args[0]
@@ -8,6 +8,12 @@ const main = args => {
   if (!['build', 'start', 'deploy', 'doctor'].includes(script)) {
     logger.errorWithExit(`Unknow script '${script}'`)
     return
+  }
+
+  if (script === 'start') {
+    env.inject('dev')
+  } else if ((script === 'build' || script === 'deploy') && args[1] === 'test') {
+    env.inject('test')
   }
 
   const result = spawn.bin(script, args.slice(1))

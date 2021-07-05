@@ -2,14 +2,14 @@ const path = require('path')
 const spawn = require('cross-spawn')
 
 class Spawn {
-  bin(script, args) {
+  static bin(script, args) {
     const a = args && Array.isArray(args) ? [...args] : [args]
     return spawn.sync(process.execPath, [path.resolve(__dirname, '..', 'bin', script), ...a], {
       stdio: 'inherit',
     })
   }
 
-  scripts(script, args) {
+  static scripts(script, args) {
     const a = args && Array.isArray(args) ? [...args] : [args]
     return spawn.sync(process.execPath, [path.resolve(__dirname, '..', 'scripts', script), ...a], {
       stdio: 'inherit',
@@ -17,4 +17,4 @@ class Spawn {
   }
 }
 
-module.exports = new Spawn()
+module.exports = Spawn

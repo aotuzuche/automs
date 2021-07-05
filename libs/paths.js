@@ -43,6 +43,8 @@ const ensureSlash = (inputPath = '', needsSlash) => {
 
 const paths = {
   dotenv: resolveApp('.env'),
+  dotenvDev: resolveApp('.env.dev'),
+  dotenvTest: resolveApp('.env.test'),
   appPath: resolveApp('.'),
   appBuild: resolveApp(process.env.BUILD_PATH || 'build'),
   appPublishUrl: ensureSlash(process.env.PUBLIC_URL, true),
