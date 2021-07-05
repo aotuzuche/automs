@@ -5,7 +5,7 @@ require('../libs/dotenv')
 const main = args => {
   const script = args[0]
 
-  if (!['build', 'start', 'doctor'].includes(script)) {
+  if (!['build', 'start', 'deploy', 'doctor'].includes(script)) {
     logger.errorWithExit(`Unknow script '${script}'`)
     return
   }
