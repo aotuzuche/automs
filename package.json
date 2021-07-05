@@ -68,6 +68,11 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
   "engines": {
     "node": ">=12.15.0"
   },
