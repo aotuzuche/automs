@@ -1,4 +1,5 @@
 **/*.svg
+/.husky
 package.json
 yarn.lock
 yarn-error.log

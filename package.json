@@ -42,8 +42,9 @@
     "version": "yarn changelog && git add CHANGELOG.md",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "test": "cd ./example && node ../bin/index.js deploy test",
-    "eslint": "eslint --ext **/*.js",
+    "eslint": "eslint --ext .js, bin libs scripts webpack scripts",
     "prettier": "prettier -c --write '**/*'",
+    "lint-staged": "lint-staged",
     "prepare": "husky install"
   },
   "files": [

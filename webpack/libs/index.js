@@ -5,7 +5,7 @@ const rules = [
   {
     type: 'cant-resolve-loader',
     re: /Can't resolve '(.*loader)'/,
-    msg: (_, match) =>
+    msg: (_, match ) =>
       `Failed to resolve loader: ${chalk.yellow(match[1])}\nYou may need to install it.`,
   },
 ]
