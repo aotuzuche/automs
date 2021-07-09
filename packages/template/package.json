@@ -1,0 +1,16 @@
+{
+  "name": "@automs/template",
+  "private": false,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": ">=12.15.0"
+  },
+  "author": "eason.chiu@atzuche",
+  "repository": "git@github.com:aotuzuche/automs.git",
+  "license": "MIT",
+  "devDependencies": {
+    "stylelint-config-atzuche": "^1.0.8"
+  }
+}

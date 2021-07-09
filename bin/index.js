@@ -16,6 +16,9 @@ const main = args => {
     env.inject('test')
   }
 
+  // check automs last version
+  spawn.scripts('checkLastVersion', args)
+
   const result = spawn.bin(script, args.slice(1))
 
   if (result.signal) {

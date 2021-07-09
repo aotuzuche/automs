@@ -1,5 +1,6 @@
 {
   "name": "automs",
+  "private": false,
   "version": "1.0.0",
   "description": "",
   "main": "bin/index.js",
@@ -17,6 +18,7 @@
     "pnp-webpack-plugin": "^1.6.4",
     "source-map-loader": "^3.0.0",
     "terser-webpack-plugin": "^5.1.4",
+    "typescript": "^4.3.5",
     "url-loader": "^4.1.1",
     "webpack": "^5.41.0",
     "webpack-dev-server": "^3.11.2"
@@ -41,7 +43,7 @@
     "doc": "cd ./document && yarn start",
     "version": "yarn log && git add CHANGELOG.md",
     "log": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
-    "test": "cd ./example && node ../bin/index.js deploy test",
+    "test": "cd ./example && node ../bin/index.js doctor",
     "eslint": "eslint --ext .js, bin libs scripts webpack scripts",
     "prettier": "prettier -c --write '**/*'",
     "prepare": "husky install"

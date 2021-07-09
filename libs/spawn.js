@@ -4,16 +4,26 @@ const spawn = require('cross-spawn')
 class Spawn {
   static bin(script, args) {
     const a = args && Array.isArray(args) ? [...args] : [args]
-    return spawn.sync(process.execPath, [path.resolve(__dirname, '..', 'bin', script), ...a], {
+    const res = spawn.sync(process.execPath, [path.resolve(__dirname, '..', 'bin', script), ...a], {
       stdio: 'inherit',
     })
+    if (res.status !== 0 && res.error) {
+      console.error(res.error)
+    }
+    return res
   }
 
   static scripts(script, args) {
     const a = args && Array.isArray(args) ? [...args] : [args]
-    return spawn.sync(process.execPath, [path.resolve(__dirname, '..', 'scripts', script), ...a], {
-      stdio: 'inherit',
-    })
+    const res = spawn.sync(
+      process.execPath,
+      [path.resolve(__dirname, '..', 'scripts', script), ...a],
+      { stdio: 'inherit' },
+    )
+    if (res.status !== 0 && res.error) {
+      console.error(res.error)
+    }
+    return res
   }
 }
 
