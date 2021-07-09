@@ -9,9 +9,9 @@ toc: menu
 ## 安装
 
 ```bash
-$ npx automs init my-project
+$ npx automs init <my-project>
 # or
-$ yarn create automs init my-project
+$ yarn create automs init <my-project>
 ```
 
 ## 创建模板
@@ -21,7 +21,7 @@ $ yarn create automs init my-project
 输入该命令后会提示并配置路由地址、是否需要登录授权、是否使用redux(dva)
 
 ```bash
-$ automs create newpage
+$ automs create <newpage>
 ```
 
 ## 本地开发

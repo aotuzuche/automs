@@ -35,6 +35,7 @@ class PackageVersion {
     return {
       isSame: npm === local,
       isInstall: local !== '',
+      local,
       last: npm,
     }
   }

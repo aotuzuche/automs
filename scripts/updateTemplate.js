@@ -5,9 +5,8 @@ const paths = require('../libs/paths')
 const packageVersion = require('../libs/packageVersion')
 const logger = require('../libs/logger')
 
-// 检查核心包版本
+// 更新模板文件
 const main = async () => {
-  // 检查并更新模板包
   const temp = await packageVersion.compare('@automs/template')
   if (!temp.isSame) {
     const res = spawn.sync('yarn', ['add', '@automs/template', '-D'], {
@@ -33,12 +32,6 @@ const main = async () => {
 
   resetFile('bin/test.sh', false)
   resetFile('bin/prod.sh', false)
-
-  // 安装husky和lint-staged
-  // todo: ...
-
-  // 检查template中所有的依赖在实际项目中的版本
-  // todo: ...
 }
 
 // 更新或创建模板文件

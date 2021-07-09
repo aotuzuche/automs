@@ -1,25 +1,48 @@
-const logger = require('../libs/logger')
+#!/usr/bin/env node
+
 const spawn = require('../libs/spawn')
 const env = require('../libs/dotenv')
 
 const main = args => {
-  const script = args[0]
+  let script = args[0]
+  let props = args.slice(1)
 
-  if (!['build', 'start', 'deploy', 'doctor'].includes(script)) {
-    logger.errorWithExit(`Unknow script '${script}'`)
-    return
+  const scriptMap = {
+    '-h': 'help',
+    '--help': 'help',
+    '-v': '--version',
   }
 
+  // 简化命令
+  if (scriptMap[script]) {
+    script = scriptMap[script]
+  }
+
+  // 打印版本
+  if (script === '--version') {
+    script = 'help'
+    props = ['-v']
+  }
+
+  // 匹配命令
+  if (!['build', 'start', 'deploy', 'doctor'].includes(script)) {
+    script = 'help'
+  }
+
+  // start、build、depoly时注入环境变量
   if (script === 'start') {
     env.inject('dev')
-  } else if ((script === 'build' || script === 'deploy') && args[1] === 'test') {
+  } else if ((script === 'build' || script === 'deploy') && props[1] === 'test') {
     env.inject('test')
   }
 
   // check automs last version
-  spawn.scripts('checkLastVersion', args)
+  if (script !== 'help') {
+    spawn.scripts('checkCliVersion')
+  }
 
-  const result = spawn.bin(script, args.slice(1))
+  // 执行脚本
+  const result = spawn.bin(script, props)
 
   if (result.signal) {
     if (result.signal === 'SIGKILL') {
