@@ -2,15 +2,14 @@
   "name": "@automs/template",
   "private": false,
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "The template for automs",
   "engines": {
     "node": ">=12.15.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   },
   "author": "eason.chiu@atzuche",
   "repository": "git@github.com:aotuzuche/automs.git",
   "license": "MIT",
-  "devDependencies": {
-    "stylelint-config-atzuche": "^1.0.8"
-  }
 }

@@ -24,6 +24,14 @@ $ yarn create automs init my-project
 $ automs create newpage
 ```
 
+## 本地开发
+
+```bash
+$ automs start
+# or
+$ yarn start
+```
+
 ## 打包
 
 打包代码
