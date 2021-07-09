@@ -5,8 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "hhh",
-    "doctor": "automs doctor"
+    "doctor": "automs doctor",
+    "prepare": "husky install"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@automs/template": "^1.0.2"
+  }
 }

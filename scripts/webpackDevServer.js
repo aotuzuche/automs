@@ -5,6 +5,7 @@ const webpackConfig = require('../webpack/config')
 const main = async () => {
   process.env.BABEL_ENV = 'development'
   process.env.NODE_ENV = 'development'
+  process.env.REACT_APP_PACKAGE = 'dev'
 
   process.on('unhandledRejection', err => {
     throw err

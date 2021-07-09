@@ -3,6 +3,7 @@ const spawn = require('cross-spawn')
 // 修改项目package.json的script命令
 const main = () => {
   if (setPackageScript('doctor', 'automs doctor').status !== 0) return
+  if (setPackageScript('prepare', 'husky install').status !== 0) return
 }
 
 const setPackageScript = (key, value) => {

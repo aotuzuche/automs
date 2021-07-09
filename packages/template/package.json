@@ -1,8 +1,11 @@
 {
   "name": "@automs/template",
   "private": false,
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "The template for automs",
+  "files": [
+    "templates"
+  ],
   "engines": {
     "node": ">=12.15.0"
   },
@@ -11,5 +14,5 @@
   },
   "author": "eason.chiu@atzuche",
   "repository": "git@github.com:aotuzuche/automs.git",
-  "license": "MIT",
+  "license": "MIT"
 }

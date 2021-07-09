@@ -7,6 +7,7 @@ const paths = require('../libs/paths')
 const main = async () => {
   process.env.BABEL_ENV = 'production'
   process.env.NODE_ENV = 'production'
+  process.env.REACT_APP_PACKAGE = 'prod' // todo: test模式下还是dev
 
   process.on('unhandledRejection', err => {
     throw err
