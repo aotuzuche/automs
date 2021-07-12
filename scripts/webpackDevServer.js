@@ -2,7 +2,7 @@ const webpack = require('webpack')
 const WebpackDevServer = require('webpack-dev-server')
 const webpackConfig = require('../webpack/config')
 
-const main = async () => {
+const webpackDevServer = async () => {
   process.env.BABEL_ENV = 'development'
   process.env.NODE_ENV = 'development'
   process.env.REACT_APP_PACKAGE = 'dev'
@@ -24,4 +24,4 @@ const main = async () => {
   })
 }
 
-module.exports = main(process.argv.slice(2))
+module.exports = webpackDevServer

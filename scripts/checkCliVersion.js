@@ -2,7 +2,7 @@ const chalk = require('chalk')
 const packageVersion = require('../libs/packageVersion')
 
 // 检查automs版本
-const main = async () => {
+const checkCliVersion = async () => {
   const tips = chalk.greenBright(`
   ╔════════════════════════════════════════════════════════════════════════════╗
   ║ A new version of automs is available!                                      ║
@@ -27,4 +27,4 @@ const main = async () => {
   }
 }
 
-module.exports = main(process.argv.slice(2))
+module.exports = checkCliVersion

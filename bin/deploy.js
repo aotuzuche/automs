@@ -1,9 +1,13 @@
-const spawn = require('../libs/spawn')
+const publicPayload = require('../scripts/publicPayload')
+const uploadOss = require('../scripts/uploadOss')
 
-const main = args => {
-  // if (spawn.scripts('webpackBuild', args).status !== 0) return
-  if (spawn.scripts('publicPayload', args).status !== 0) return
-  if (spawn.scripts('uploadOss', args).status !== 0) return
+const main = async args => {
+  try {
+    await publicPayload()
+    await uploadOss(args[0])
+  } catch (err) {
+    console.log(err.message)
+  }
 }
 
 module.exports = main(process.argv.slice(2))

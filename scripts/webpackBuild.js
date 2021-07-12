@@ -4,10 +4,10 @@ const webpackConfig = require('../webpack/config')
 const logger = require('../libs/logger')
 const paths = require('../libs/paths')
 
-const main = async () => {
+const webpackBuild = async (mode = 'prod') => {
   process.env.BABEL_ENV = 'production'
   process.env.NODE_ENV = 'production'
-  process.env.REACT_APP_PACKAGE = 'prod' // todo: test模式下还是dev
+  process.env.REACT_APP_PACKAGE = mode === 'prod' ? 'prod' : 'dev'
 
   process.on('unhandledRejection', err => {
     throw err
@@ -48,4 +48,4 @@ const build = () => {
   })
 }
 
-module.exports = main(process.argv.slice(2))
+module.exports = webpackBuild

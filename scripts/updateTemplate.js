@@ -6,15 +6,14 @@ const packageVersion = require('../libs/packageVersion')
 const logger = require('../libs/logger')
 
 // 更新模板文件
-const main = async () => {
+const updateTemplate = async () => {
   const temp = await packageVersion.compare('@automs/template')
   if (!temp.isSame) {
     const res = spawn.sync('yarn', ['add', '@automs/template', '-D'], {
       stdio: 'inherit',
     })
     if (res.status !== 0) {
-      console.log(res.error)
-      return
+      throw res
     }
   }
 
@@ -61,4 +60,4 @@ const resetFile = (name, replaceDot = true) => {
   }
 }
 
-module.exports = main(process.argv.slice(2))
+module.exports = updateTemplate

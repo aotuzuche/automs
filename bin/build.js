@@ -1,7 +1,11 @@
-const spawn = require('../libs/spawn')
+const webpackBuild = require('../scripts/webpackBuild')
 
-const main = args => {
-  return spawn.scripts('webpackBuild', args)
+const main = async args => {
+  try {
+    await webpackBuild(args[1])
+  } catch (err) {
+    console.log(err.message)
+  }
 }
 
 module.exports = main(process.argv.slice(2))

@@ -1,8 +1,8 @@
-const webpackDevServer = require('../scripts/webpackDevServer')
+const updateCli = require('../scripts/updateCli')
 
 const main = async args => {
   try {
-    await webpackDevServer()
+    await updateCli()
   } catch (err) {
     console.log(err.message)
   }
