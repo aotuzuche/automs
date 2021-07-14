@@ -4,6 +4,7 @@
   "version": "1.0.1",
   "description": "",
   "main": "bin/index.js",
+  "homepage": "https://aotuzuche.github.io/automs",
   "bin": {
     "automs": "bin/index.js"
   },
