@@ -12,15 +12,21 @@ jobs:
         uses: actions/checkout@master
         with:
           persist-credentials: false
+
+      - name: setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
       - name: install and build
         run: |
           cd document
           yarn
           yarn build
+
       - name: deploy
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           branch: gh-pages
           folder: document/dist
-
