@@ -1,6 +1,6 @@
 const updateCli = require('../scripts/updateCli')
 
-const main = async args => {
+const main = async () => {
   try {
     await updateCli()
   } catch (err) {

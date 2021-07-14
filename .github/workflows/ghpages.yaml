@@ -1,0 +1,21 @@
+name: build doc
+on:
+  push:
+    branchs:
+      - master
+
+jobs:
+  build-doc:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+        with:
+          persist-credentials: false
+      - name: install and build
+        run: |
+          cd document
+          yarn
+          yarn build
+      # - name: deploy
+

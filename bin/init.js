@@ -1,11 +1,7 @@
-const inquirer = require('inquirer')
+const askInitQuestions = require('../scripts/askInitQuestions')
 
-const main = async args => {
-  const res = await inquirer.prompt({
-    type: 'confirm',
-    name: 'reslut',
-    message: '确定吗？',
-  })
+const main = async () => {
+  const res = await askInitQuestions()
 
   console.log(res)
 }

@@ -48,7 +48,9 @@ const main = async args => {
   }
 
   // check automs last version
-  await checkCliVersion()
+  if (command.name !== 'init') {
+    await checkCliVersion()
+  }
 
   // 执行脚本
   const result = spawn.bin(command.name, command.extra)

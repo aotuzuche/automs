@@ -4,9 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "hhh",
-    "doctor": "automs doctor",
-    "prepare": "husky install"
   },
   "author": "",
   "license": "ISC",

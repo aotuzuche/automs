@@ -1,6 +1,6 @@
 const webpackDevServer = require('../scripts/webpackDevServer')
 
-const main = async args => {
+const main = async () => {
   try {
     await webpackDevServer()
   } catch (err) {

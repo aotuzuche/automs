@@ -46,7 +46,7 @@
     "doc": "cd ./document && yarn start",
     "version": "yarn log && git add CHANGELOG.md",
     "log": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
-    "test": "cd ./example && node ../bin/index.js create",
+    "test": "cd ./example && node ../bin/index.js init",
     "doctor": "cd ./example && node ../bin/index.js doctor",
     "eslint": "eslint --ext .js, bin libs scripts webpack",
     "prettier": "prettier -c --write '**/*'",
