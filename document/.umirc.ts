@@ -3,6 +3,7 @@ import { defineConfig } from 'dumi'
 export default defineConfig({
   title: 'automs',
   mode: 'site',
+  publicPath: '/automs/',
   base: '/automs',
   hash: true,
   logo: '/logo.png',
