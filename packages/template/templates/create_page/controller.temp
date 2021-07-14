@@ -1,0 +1,45 @@
+<% if (model) { %>import { Loading, Toast } from 'auto-ui'<% } %>
+import * as React from 'react'
+import { RouteComponentProps } from 'react-router'
+
+<% if (model) { %>
+interface IProps extends RouteComponentProps {
+  dispatch: <T>(action: { type: string; payload?: any }) => Promise<T>
+}
+
+interface IState {
+  visible: boolean
+}
+
+export default class Controller extends React.PureComponent<IProps, IState> {
+  state = {
+    visible: false,
+  }
+
+  fetchData = async () => {
+    try {
+      Loading()
+      await this.props.dispatch({
+        type: '',
+        payload: {},
+      })
+    } catch (err) {
+      Toast(err.message || '系统错误')
+    } finally {
+      Loading.hide()
+    }
+  }
+}
+<% } else { %>
+interface IProps extends RouteComponentProps {}
+
+interface IState {
+  visible: boolean
+}
+
+export default class Controller extends React.PureComponent<IProps, IState> {
+  state = {
+    visible: false,
+  }
+}
+<% } %>

@@ -1,0 +1,25 @@
+import { Model } from 'dva'
+
+interface I<%= pascalPage %>PageState {
+  count: number
+}
+
+const initialState: I<%= pascalPage %>PageState = {
+  count: 1,
+}
+
+const model: Model = {
+  namespace: '<%= namespace %>',
+  state: initialState,
+  reducers: {
+    reducer(state, { payload }) {
+      const ns: I<%= pascalPage %>PageState = { count: 1 }
+      return ns
+    },
+  },
+  effects: {
+    *effect(action, { put, call }) {},
+  },
+}
+
+export default model

@@ -12,7 +12,7 @@ class Logger {
   }
 
   error(message) {
-    this.log(`${chalk.red(message)}`)
+    this.log(`🚫 ${chalk.red(message)}`)
   }
 
   errorWithExit(message) {

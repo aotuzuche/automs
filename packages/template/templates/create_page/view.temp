@@ -1,0 +1,20 @@
+import { Layout } from 'auto-ui'
+import * as React from 'react'
+import Controller from './controller'
+import './style'
+
+export default class View extends Controller {
+  render() {
+    return (
+      <Layout className="<%= className %>">
+        <Layout.Header title="标题" onBackClick={true} />
+
+        <Layout.Body>
+          <div>body</div>
+        </Layout.Body>
+
+        <Layout.Footer>footer</Layout.Footer>
+      </Layout>
+    )
+  }
+}

@@ -54,7 +54,7 @@ const paths = {
   appIndexJs: resolveModule(resolveApp, 'src/index'),
   yarnLockFile: resolveApp('yarn.lock'),
   appNodeModules: resolveApp('node_modules'),
-  template: resolveApp('node_modules/@automs/template/templates'),
+  template: resolveApp('node_modules/@automs/template'),
 }
 
 module.exports = paths

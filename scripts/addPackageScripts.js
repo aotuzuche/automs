@@ -3,7 +3,6 @@ const spawn = require('cross-spawn')
 // 修改项目package.json的script命令
 const addPackageScripts = async () => {
   await setPackageScript('doctor', 'automs doctor')
-  await setPackageScript('doctor', 'automs doctor')
 }
 
 const setPackageScript = (key, value) => {

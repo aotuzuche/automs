@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@automs/template": "^1.0.2",
+    "@automs/template": "^1.0.6",
     "automs": "^1.0.1"
   }
 }

@@ -1,0 +1,27 @@
+<% if (auth) { %>import Auth from '@/containers/auth'<% } %>
+<% if (model) { %>import { connect } from 'dva'<% } %>
+import View from './view'
+
+<% if (auth && model) { %>
+export default connect((models: any) => {
+  return {
+    store: models.<%= namespace %>,
+  }
+})(Auth(View))
+<% } %>
+
+<% if (auth && !model) { %>
+export default Auth(View)
+<% } %>
+
+<% if (!auth && model) { %>
+export default connect((models: any) => {
+  return {
+    store: models.<%= namespace %>,
+  }
+})(View)
+<% } %>
+
+<% if (!auth && !model) { %>
+export default View
+<% } %>

@@ -1,4 +1,4 @@
 #!/bin/sh
 
 yarn
-automs deploy
+automs deploy:test

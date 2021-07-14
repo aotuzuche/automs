@@ -1,0 +1,10 @@
+import { http } from 'auto-libs'
+
+// 获取数据
+export const fetchData = (id: string) => {
+  return http.request({
+    url: '/appserver/xxxx/xxxxxxxx',
+    method: 'get',
+    params: { id },
+  })
+}
