@@ -1,6 +1,7 @@
 const inquirer = require('inquirer')
 const spawn = require('cross-spawn')
 const packageVersion = require('../libs/packageVersion')
+const logger = require('../libs/logger')
 
 // 更新脚手架
 const updateCli = async () => {
@@ -23,6 +24,8 @@ const updateCli = async () => {
     if (res.status !== 0) {
       throw res
     }
+  } else {
+    logger.succeed('automs 已经是最新版本')
   }
 }
 

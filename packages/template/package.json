@@ -1,7 +1,7 @@
 {
   "name": "@automs/template",
   "private": false,
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "The template for automs",
   "files": [
     "templates"

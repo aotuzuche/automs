@@ -5,6 +5,7 @@ import { RouteComponentProps } from 'react-router'
 <% if (model) { %>
 interface IProps extends RouteComponentProps {
   dispatch: <T>(action: { type: string; payload?: any }) => Promise<T>
+  [props: string]: any
 }
 
 interface IState {
@@ -31,7 +32,9 @@ export default class Controller extends React.PureComponent<IProps, IState> {
   }
 }
 <% } else { %>
-interface IProps extends RouteComponentProps {}
+interface IProps extends RouteComponentProps {
+  [props: string]: any
+}
 
 interface IState {
   visible: boolean

@@ -3,12 +3,21 @@ const path = require('path')
 const fs = require('fs-extra')
 const updateTemplate = require('../scripts/updateTemplate')
 const askCreateQuestions = require('../scripts/askCreateQuestions')
+const checkIsWorkspace = require('../scripts/checkIsWorkspace')
 const logger = require('../libs/logger')
 const paths = require('../libs/paths')
 
 const main = async () => {
   try {
+    // 检查当前环境
+    if (!checkIsWorkspace()) {
+      return
+    }
+
+    // 更新模板
     await updateTemplate()
+
+    // 提问
     const res = await askCreateQuestions()
 
     // 创建pages目录
@@ -54,7 +63,7 @@ const createFile = (p, data, name) => {
   if (fs.existsSync(f)) {
     const str = String(fs.readFileSync(f))
     let temp = ejs.render(str, data)
-    temp = temp.trim().replace(/(\r?\n){2,}/g, '\n\n')
+    temp = temp.trim().replace(/(\r?\n){2,}/g, '\n\n') + '\n'
     fs.writeFileSync(path.resolve(paths.appSrc, 'pages', name), temp)
     logger.succeed('创建' + name)
   }

@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+const path = require('path')
 const spawn = require('../libs/spawn')
 const env = require('../libs/dotenv')
 const packageVersion = require('../libs/packageVersion')
@@ -18,6 +19,7 @@ const commands = [
   { name: 'doctor', desc: '检查项目依赖、配置、lint等情况' },
   { name: 'upgrade', desc: '升级脚手架，同时将项目依赖升级至最新' },
   { name: 'version', alias: '-v', desc: '查看当前脚手架版本' },
+  { name: 'where', alias: '-w', desc: '查看脚手架所在位置' },
   { name: 'help', alias: '-h', desc: '看帮助文档' },
 ]
 
@@ -34,8 +36,19 @@ const main = async args => {
     return
   }
 
+  if (command.name === 'where') {
+    console.log(__dirname)
+    return
+  }
+
   if (command.name === 'version') {
-    const v = packageVersion.local('automs')
+    let v = packageVersion.local('automs')
+    if (!v) {
+      const p = require(path.resolve(__dirname, '..', 'package.json'))
+      if (p && p.version) {
+        v = p.version
+      }
+    }
     console.log(v)
     return
   }
