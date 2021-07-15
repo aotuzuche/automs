@@ -1,8 +1,8 @@
 const path = require('path')
 const fs = require('fs-extra')
-const logger = require('../libs/logger')
-const askInitQuestions = require('../scripts/askInitQuestions')
-const generateProject = require('../scripts/generateProject')
+const logger = require('@automs/tools/libs/logger')
+const askInitQuestions = require('@automs/tools/scripts/askInitQuestions')
+const generateProject = require('@automs/tools/scripts/generateProject')
 
 const main = async () => {
   const res = await askInitQuestions()

@@ -1,7 +1,7 @@
-const logger = require('../libs/logger')
-const addPackageScripts = require('../scripts/addPackageScripts')
-const updateTemplate = require('../scripts/updateTemplate')
-const updatePackages = require('../scripts/updatePackages')
+const logger = require('@automs/tools/libs/logger')
+const addPackageScripts = require('@automs/tools/scripts/addPackageScripts')
+const updateTemplate = require('@automs/tools/scripts/updateTemplate')
+const updatePackages = require('@automs/tools/scripts/updatePackages')
 
 const main = async () => {
   try {

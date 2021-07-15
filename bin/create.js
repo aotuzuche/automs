@@ -1,11 +1,11 @@
 const ejs = require('ejs')
 const path = require('path')
 const fs = require('fs-extra')
-const updateTemplate = require('../scripts/updateTemplate')
-const askCreateQuestions = require('../scripts/askCreateQuestions')
-const checkIsWorkspace = require('../scripts/checkIsWorkspace')
-const logger = require('../libs/logger')
-const paths = require('../libs/paths')
+const updateTemplate = require('@automs/tools/scripts/updateTemplate')
+const askCreateQuestions = require('@automs/tools/scripts/askCreateQuestions')
+const checkIsWorkspace = require('@automs/tools/scripts/checkIsWorkspace')
+const logger = require('@automs/tools/libs/logger')
+const paths = require('@automs/tools/libs/paths')
 
 const main = async () => {
   try {

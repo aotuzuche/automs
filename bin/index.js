@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
 const path = require('path')
-const spawn = require('../libs/spawn')
-const env = require('../libs/dotenv')
-const packageVersion = require('../libs/packageVersion')
-const checkCliVersion = require('../scripts/checkCliVersion')
+const spawn = require('cross-spawn')
+const env = require('@automs/tools/libs/dotenv')
+const packageVersion = require('@automs/tools/libs/packageVersion')
+const checkCliVersion = require('@automs/tools/scripts/checkCliVersion')
 
 // console.log(process.versions.node)
 
@@ -66,7 +66,7 @@ const main = async args => {
   }
 
   // 执行脚本
-  const result = spawn.bin(command.name, command.extra)
+  const result = spawnBin(command.name, command.extra)
 
   if (result.signal) {
     if (result.signal === 'SIGKILL') {
@@ -112,6 +112,17 @@ const printHelp = () => {
     const name = `${c.name}${c.extra ? `:${c.extra}` : ''}${c.alias ? `, ${c.alias}` : ''}`
     console.log(`  ${`${name}${' '.repeat(20)}`.substr(0, 22)}${c.desc}`)
   })
+}
+
+const spawnBin = (script, args) => {
+  const a = args && Array.isArray(args) ? [...args] : args !== void 0 ? [args] : []
+  const res = spawn.sync(process.execPath, [path.resolve(__dirname, '..', 'bin', script), ...a], {
+    stdio: 'inherit',
+  })
+  if (res.status !== 0 && res.error) {
+    console.error(res.error)
+  }
+  return res
 }
 
 module.exports = main(process.argv.slice(2))
