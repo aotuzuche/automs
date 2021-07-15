@@ -1,0 +1,20 @@
+{
+  "name": "@automs/webpack",
+  "private": false,
+  "version": "1.0.0",
+  "description": "The webpack config for automs",
+  "files": [
+    "index.js",
+    "plugins",
+    "libs"
+  ],
+  "engines": {
+    "node": ">=12.15.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "author": "eason.chiu@atzuche",
+  "repository": "git@github.com:aotuzuche/automs.git",
+  "license": "MIT"
+}
