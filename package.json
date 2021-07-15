@@ -1,7 +1,7 @@
 {
   "name": "automs",
   "private": false,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "bin/index.js",
   "homepage": "https://aotuzuche.github.io/automs",

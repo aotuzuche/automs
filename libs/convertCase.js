@@ -8,11 +8,15 @@ class ConvertCase {
   }
 
   static snakify(str) {
-    return str.replace(/[A-Z]/g, match => '_' + match[0]).toLowerCase()
+    let res = str.replace(/[A-Z]/g, match => '_' + match[0]).toLowerCase()
+    res = res.replace(/^_/, '')
+    return res
   }
 
   static dashfy(str) {
-    return str.replace(/[A-Z]/g, match => '-' + match[0]).toLowerCase()
+    let res = str.replace(/[A-Z]/g, match => '-' + match[0]).toLowerCase()
+    res = res.replace(/^-/, '')
+    return res
   }
 }
 

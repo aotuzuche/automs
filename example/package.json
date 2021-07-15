@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-  },
-  "author": "",
+  "scripts": {},
+  "author": "Eason chiu <76670758@qq.com>",
   "license": "ISC",
   "devDependencies": {
     "@automs/template": "^1.0.6",

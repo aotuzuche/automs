@@ -8,10 +8,16 @@ class Logger {
   }
 
   log(msg) {
+    if (this.spinner.isSpinning) {
+      this.spinner.stop()
+    }
     this.baseLog(msg === void 0 ? '' : msg)
   }
 
   error(message) {
+    if (this.spinner.isSpinning) {
+      this.spinner.stop()
+    }
     this.log(`🚫 ${chalk.red(message)}`)
   }
 
