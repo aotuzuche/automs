@@ -1,7 +1,7 @@
 {
   "name": "@automs/template",
   "private": false,
-  "version": "1.1.9",
+  "version": "1.1.11",
   "description": "The template for automs",
   "files": [
     "index.js",
