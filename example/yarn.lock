@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@automs/tools@^1.1.6":
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/@automs/tools/-/tools-1.1.6.tgz#8501da5b26354210ba01e7a9db252b0459a84225"
-  integrity sha512-IGv3ssRhgKLJ1o80zD3gg3eTfvIPMhks4a1R+bmnYk3qFK5gx7ZArUO8K/U6DN79kOYqhX7hFw1OyOBmBqQOvg==
+"@automs/tools@^1.1.7":
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/@automs/tools/-/tools-1.1.7.tgz#490c154cd57d3139b199fa73bd2bd3122f8a11f1"
+  integrity sha512-InfYdZnzHu8EUUw9/jOK3qzueeLAXoC7k/EMeEe5ukbgDJkq+AH3T2zh4wd4JsXzE++SxPynp046lZkTW9zLig==
   dependencies:
     ali-oss "^6.16.0"
     chalk "^4.1.1"
@@ -16,12 +16,12 @@
     inquirer "^8.1.2"
     ora "^5.4.1"
 
-"@automs/webpack@^1.1.6":
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/@automs/webpack/-/webpack-1.1.6.tgz#b546ca5c317ce8a591b2b82b71d70dc6520413ae"
-  integrity sha512-t166CE2gPaH7UQlHX8s2KeKGB6oN++W75P2V0oTIIC3oAyqlCKqlEBIaUXBgGW5Bl+myzYSfsp7ctS4+BzKeXQ==
+"@automs/webpack@^1.1.7":
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/@automs/webpack/-/webpack-1.1.7.tgz#fdcdfab2e0a765cb792d4b8a67038b28951aaae3"
+  integrity sha512-J/UAJPphuGWx+NBCKgOVEa8zapNdWyCqNzNNcT0TLbu6e/DTOec93MBviYZCOjqA7UBcd+2QX8QUvWTytwMJIg==
   dependencies:
-    "@automs/tools" "^1.1.6"
+    "@automs/tools" "^1.1.7"
     chalk "^4.1.1"
     css-minimizer-webpack-plugin "^3.0.2"
     friendly-errors-webpack-plugin "^1.7.0"
@@ -486,13 +486,13 @@ atob@^2.1.2:
   resolved "https://registry.npm.taobao.org/atob/download/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha1-bZUX654DDSQ2ZmZR6GvZ9vE1M8k=
 
-automs@^1.1.6:
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/automs/-/automs-1.1.6.tgz#c4e218f0bc213965d2cd26ea868169da3790be7d"
-  integrity sha512-q/dDg5/QALD/5IKtzOL3sJqoWHYhWcWu4Px/kSSQ/ojiSeaVHVIiQDJ0gMqWllUi5apYJ/H9/Z7UfQHJNAmeow==
+automs@^1.1.7:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/automs/-/automs-1.1.7.tgz#a6abc6d0064e05ad121addc016ff3114de34eaa0"
+  integrity sha512-WTG1qZMJTFSrpwhtoclq8FMtYelFD5ZsdadtbfbnxCt1BArKOAyW7kxD1/pPXA28sdZ19PIXg8/wvbTnRJgO3g==
   dependencies:
-    "@automs/tools" "^1.1.6"
-    "@automs/webpack" "^1.1.6"
+    "@automs/tools" "^1.1.7"
+    "@automs/webpack" "^1.1.7"
     fs-extra "^10.0.0"
 
 balanced-match@^1.0.0:
