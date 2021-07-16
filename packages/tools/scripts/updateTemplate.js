@@ -24,14 +24,15 @@ const updateTemplate = async () => {
 // 更新或创建模板文件
 const resetFile = (name, replaceDot = true) => {
   const template = path.resolve(
-    paths.template,
+    require.resolve('@automs/template').replace(/index\.js$/, ''),
     'init',
     replaceDot ? name.replace(/\./g, '_dot_') : name,
   )
+
   const file = path.resolve(paths.appPath, name)
   const fileExist = fs.existsSync(file)
 
-  if (!fs.existsSync(template) || !fs.existsSync(paths.appSrc)) {
+  if (!fs.existsSync(template)) {
     return
   }
 
