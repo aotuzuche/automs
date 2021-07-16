@@ -7,7 +7,7 @@ const askCreateQuestions = require('@automs/tools/scripts/askCreateQuestions')
 const checkIsWorkspace = require('@automs/tools/scripts/checkIsWorkspace')
 const logger = require('@automs/tools/libs/logger')
 const paths = require('@automs/tools/libs/paths')
-require('@automs/template')
+const template = require('@automs/template')
 
 const main = async () => {
   try {
@@ -17,6 +17,7 @@ const main = async () => {
     }
 
     // 更新模板
+    template()
     await updateTemplate()
 
     // 提问

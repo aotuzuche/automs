@@ -26,7 +26,7 @@
     "doc": "cd ./document && yarn start",
     "version": "yarn log && git add CHANGELOG.md",
     "log": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
-    "test": "cd ./example && ../packages/cli/commands/index.js doctor",
+    "test": "cd ./example && ../packages/cli/commands/index.js create",
     "eslint": "eslint --ext .js, scripts packages",
     "prettier": "prettier -c --write '**/*'",
     "ps": "sh ./scripts/publish.sh",
