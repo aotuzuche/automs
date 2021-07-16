@@ -1,4 +1,13 @@
-## 1.0.6 (2021-07-16)
+## [1.0.6](https://github.com/aotuzuche/automs/compare/v1.1.1...v1.0.6) (2021-07-16)
+
+
+### Features
+
+* upgrade packages ([826b255](https://github.com/aotuzuche/automs/commit/826b255845951f4267de54af7bf2fedb62206d60))
+
+
+
+## [1.1.1](https://github.com/aotuzuche/automs/compare/0e4cd848d0d14135dcb88d5158747bacfc0db536...v1.1.1) (2021-07-16)
 
 
 ### Bug Fixes

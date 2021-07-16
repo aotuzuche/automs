@@ -1,14 +1,14 @@
 {
   "name": "@automs/bin",
   "private": false,
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "The bin for automs",
   "bin": {
     "automs": "commands/index.js"
   },
   "dependencies": {
-    "@automs/tools": "^1.1.1",
-    "@automs/webpack": "^1.1.1",
+    "@automs/tools": "^1.1.2",
+    "@automs/webpack": "^1.1.2",
     "fs-extra": "^10.0.0"
   },
   "files": [
