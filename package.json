@@ -31,7 +31,7 @@
     "doctor": "automs doctor",
     "eslint": "eslint --ext .js, scripts packages",
     "prettier": "prettier -c --write '**/*'",
-    "publish": "./node_modules/lerna/cli.js publish",
+    "ps": "./node_modules/lerna/cli.js publish",
     "prepare": "husky install"
   },
   "files": [
