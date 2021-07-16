@@ -1,4 +1,35 @@
-## [1.0.6](https://github.com/aotuzuche/automs/compare/v1.1.1...v1.0.6) (2021-07-16)
+# [](https://github.com/aotuzuche/automs/compare/v1.1.5...v) (2021-07-16)
+
+
+
+## [1.1.5](https://github.com/aotuzuche/automs/compare/v1.1.4...v1.1.5) (2021-07-16)
+
+
+### Bug Fixes
+
+* fix cli bug ([e6f380e](https://github.com/aotuzuche/automs/commit/e6f380ee3328e9ec96b21ab6b99c488e05406d4f))
+
+
+
+## [1.1.4](https://github.com/aotuzuche/automs/compare/v1.1.3...v1.1.4) (2021-07-16)
+
+
+### Bug Fixes
+
+* fix package name ([710d837](https://github.com/aotuzuche/automs/commit/710d8374c3388c3547bb0a7751e039071689b31e))
+
+
+
+## [1.1.3](https://github.com/aotuzuche/automs/compare/v1.1.2...v1.1.3) (2021-07-16)
+
+
+### Bug Fixes
+
+* fix package name ([dad8967](https://github.com/aotuzuche/automs/commit/dad89678f37ba234150070b642c1ae0a13d59055))
+
+
+
+## [1.1.2](https://github.com/aotuzuche/automs/compare/v1.1.1...v1.1.2) (2021-07-16)
 
 
 ### Features

@@ -2,32 +2,6 @@
 # yarn lockfile v1
 
 
-"@automs/tools@file:packages/tools":
-  version "1.0.0"
-  dependencies:
-    ali-oss "^6.16.0"
-    chalk "^4.1.1"
-    cross-spawn "^7.0.3"
-    dotenv "^10.0.0"
-    dotenv-expand "^5.1.0"
-    fs-extra "^10.0.0"
-    inquirer "^8.1.2"
-    ora "^5.4.1"
-
-"@automs/webpack@file:packages/webpack":
-  version "1.0.0"
-  dependencies:
-    "@automs/tools" "file:../../../Library/Caches/Yarn/v6/npm-@automs-webpack-1.0.0-c6498c40-8580-45dd-a2f2-11e62a634586-1626410879060/node_modules/@automs/tools"
-    chalk "^4.1.1"
-    css-minimizer-webpack-plugin "^3.0.2"
-    friendly-errors-webpack-plugin "^1.7.0"
-    fs-extra "^10.0.0"
-    source-map-loader "^3.0.0"
-    terser-webpack-plugin "^5.1.4"
-    url-loader "^4.1.1"
-    webpack "^5.44.0"
-    webpack-dev-server "^3.11.2"
-
 "@babel/code-frame@7.12.11":
   version "7.12.11"
   resolved "https://registry.nlark.com/@babel/code-frame/download/@babel/code-frame-7.12.11.tgz#f4ad435aa263db935b8f10f2c552d23fb716a63f"

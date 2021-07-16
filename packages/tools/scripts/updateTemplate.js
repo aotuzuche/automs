@@ -1,22 +1,10 @@
-const spawn = require('cross-spawn')
 const path = require('path')
 const fs = require('fs')
 const paths = require('../libs/paths')
-const packageVersion = require('../libs/packageVersion')
 const logger = require('../libs/logger')
 
 // 更新模板文件
 const updateTemplate = async () => {
-  const temp = await packageVersion.compare('@automs/template')
-  if (!temp.isSame) {
-    const res = spawn.sync('yarn', ['add', '@automs/template', '-D'], {
-      stdio: 'inherit',
-    })
-    if (res.status !== 0) {
-      throw res
-    }
-  }
-
   // 更新或创建模板文件
   resetFile('.babelrc')
   resetFile('.editorconfig')
@@ -44,6 +32,7 @@ const resetFile = (name, replaceDot = true) => {
   const fileExist = fs.existsSync(file)
 
   if (!fs.existsSync(template) || !fs.existsSync(paths.appSrc)) {
+    console.log('ee', template)
     return
   }
 
