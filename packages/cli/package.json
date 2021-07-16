@@ -7,7 +7,7 @@
     "automs": "commands/index.js"
   },
   "dependencies": {
-    "@automs/cli": "^1.1.7",
+    "@automs/template": "^1.1.7",
     "@automs/tools": "^1.1.7",
     "@automs/webpack": "^1.1.7",
     "fs-extra": "^10.0.0"

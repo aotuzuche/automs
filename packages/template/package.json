@@ -4,7 +4,8 @@
   "version": "1.1.6",
   "description": "The template for automs",
   "files": [
-    "templates"
+    "create_page",
+    "init"
   ],
   "engines": {
     "node": ">=12.15.0"
