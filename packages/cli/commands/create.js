@@ -59,7 +59,7 @@ const main = async () => {
 }
 
 const createFile = (p, data, name) => {
-  const f = path.resolve(paths.template, 'templates/create_page', p)
+  const f = path.resolve(paths.templates, 'create_page', p)
 
   if (fs.existsSync(f)) {
     const str = String(fs.readFileSync(f))
