@@ -7,8 +7,8 @@
     "automs": "commands/index.js"
   },
   "dependencies": {
-    "@automs/tools": "file:../tools",
-    "@automs/webpack": "file:../webpack",
+    "@automs/tools": "^1.1.1",
+    "@automs/webpack": "^1.1.1",
     "fs-extra": "^10.0.0"
   },
   "files": [
@@ -22,5 +22,6 @@
   },
   "author": "eason.chiu@atzuche",
   "repository": "git@github.com:aotuzuche/automs.git",
-  "license": "MIT"
+  "license": "MIT",
+  "gitHead": "450f2f82e51cc930507c707545ac68bfa1770b7e"
 }

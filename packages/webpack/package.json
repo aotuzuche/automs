@@ -4,7 +4,7 @@
   "version": "1.1.1",
   "description": "The webpack config for automs",
   "dependencies": {
-    "@automs/tools": "file:../tools",
+    "@automs/tools": "^1.1.1",
     "chalk": "^4.1.1",
     "css-minimizer-webpack-plugin": "^3.0.2",
     "friendly-errors-webpack-plugin": "^1.7.0",
@@ -30,5 +30,6 @@
   },
   "author": "eason.chiu@atzuche",
   "repository": "git@github.com:aotuzuche/automs.git",
-  "license": "MIT"
+  "license": "MIT",
+  "gitHead": "450f2f82e51cc930507c707545ac68bfa1770b7e"
 }

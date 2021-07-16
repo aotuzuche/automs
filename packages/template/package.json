@@ -14,5 +14,6 @@
   },
   "author": "eason.chiu@atzuche",
   "repository": "git@github.com:aotuzuche/automs.git",
-  "license": "MIT"
+  "license": "MIT",
+  "gitHead": "450f2f82e51cc930507c707545ac68bfa1770b7e"
 }
