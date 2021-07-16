@@ -1,7 +1,7 @@
 #!/bin/bash
 
-echo 'publish with proxy:'
+echo 'push with proxy:'
 git config --global https.proxy socks5://127.0.0.1:10081
 git config --global https.proxy
-./node_modules/lerna/cli.js publish
+git push
 git config --global --unset https.proxy

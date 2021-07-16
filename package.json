@@ -32,6 +32,7 @@
     "eslint": "eslint --ext .js, scripts packages",
     "prettier": "prettier -c --write '**/*'",
     "ps": "sh ./scripts/publish.sh",
+    "push": "sh ./scripts/push.sh",
     "prepare": "husky install"
   },
   "files": [
