@@ -1,4 +1,4 @@
-const webpackDevServer = require('../../webpack/devServer')
+const webpackDevServer = require('@automs/webpack/devServer')
 
 const main = async () => {
   try {

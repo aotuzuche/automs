@@ -27,15 +27,14 @@
     "doc": "cd ./document && yarn start",
     "version": "yarn log && git add CHANGELOG.md",
     "log": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
-    "test": "cd ./example && automs help",
+    "test": "cd ./example && automs init",
     "doctor": "automs doctor",
     "eslint": "eslint --ext .js, scripts packages",
     "prettier": "prettier -c --write '**/*'",
-    "ps": "./node_modules/lerna/cli.js publish",
+    "publish": "./node_modules/lerna/cli.js publish",
     "prepare": "husky install"
   },
   "files": [
-    "bin",
     "packages",
     "scripts"
   ],

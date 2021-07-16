@@ -2,10 +2,10 @@
 
 const path = require('path')
 const spawn = require('cross-spawn')
-const env = require('../../tools/libs/dotenv')
-const packageVersion = require('../../tools/libs/packageVersion')
-const checkCliVersion = require('../../tools/scripts/checkCliVersion')
-const updatePackages = require('../../tools/scripts/updatePackages')
+const env = require('@automs/tools/libs/dotenv')
+const packageVersion = require('@automs/tools/libs/packageVersion')
+const checkCliVersion = require('@automs/tools/scripts/checkCliVersion')
+const updatePackages = require('@automs/tools/scripts/updatePackages')
 
 // console.log(process.versions.node)
 

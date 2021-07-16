@@ -1,5 +1,5 @@
-const publicPayload = require('../../tools/scripts/publicPayload')
-const uploadOss = require('../../tools/scripts/uploadOss')
+const publicPayload = require('@automs/tools/scripts/publicPayload')
+const uploadOss = require('@automs/tools/scripts/uploadOss')
 
 const main = async args => {
   try {

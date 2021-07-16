@@ -7,6 +7,8 @@
     "automs": "commands/index.js"
   },
   "dependencies": {
+    "@automs/tools": "file:../tools",
+    "@automs/webpack": "file:../webpack",
     "fs-extra": "^10.0.0"
   },
   "files": [
