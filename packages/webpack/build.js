@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 const fs = require('fs-extra')
-const logger = require('@automs/tools/libs/logger')
-const paths = require('@automs/tools/libs/paths')
+const logger = require('../tools/libs/logger')
+const paths = require('../tools/libs/paths')
 const webpackConfig = require('./config')
 
 const webpackBuild = async (mode = 'prod') => {

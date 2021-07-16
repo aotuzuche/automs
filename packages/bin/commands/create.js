@@ -1,11 +1,12 @@
 const ejs = require('ejs')
 const path = require('path')
 const fs = require('fs-extra')
-const updateTemplate = require('@automs/tools/scripts/updateTemplate')
-const askCreateQuestions = require('@automs/tools/scripts/askCreateQuestions')
-const checkIsWorkspace = require('@automs/tools/scripts/checkIsWorkspace')
-const logger = require('@automs/tools/libs/logger')
-const paths = require('@automs/tools/libs/paths')
+const os = require('os')
+const updateTemplate = require('../../tools/scripts/updateTemplate')
+const askCreateQuestions = require('../../tools/scripts/askCreateQuestions')
+const checkIsWorkspace = require('../../tools/scripts/checkIsWorkspace')
+const logger = require('../../tools/libs/logger')
+const paths = require('../../tools/libs/paths')
 
 const main = async () => {
   try {
@@ -63,7 +64,7 @@ const createFile = (p, data, name) => {
   if (fs.existsSync(f)) {
     const str = String(fs.readFileSync(f))
     let temp = ejs.render(str, data)
-    temp = temp.trim().replace(/(\r?\n){2,}/g, '\n\n') + '\n'
+    temp = temp.trim().replace(/(\r?\n){2,}/g, '\n\n') + os.EOL
     fs.writeFileSync(path.resolve(paths.appSrc, 'pages', name), temp)
     logger.succeed('创建' + name)
   }

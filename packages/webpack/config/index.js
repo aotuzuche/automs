@@ -1,4 +1,4 @@
-const paths = require('@automs/tools/libs/paths')
+const paths = require('../../tools/libs/paths')
 const path = require('path')
 const TerserPlugin = require('terser-webpack-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')

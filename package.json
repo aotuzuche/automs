@@ -1,19 +1,12 @@
 {
   "name": "automs",
-  "private": false,
-  "version": "1.0.5",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "version": "1.0.6",
   "description": "",
-  "main": "bin/index.js",
   "homepage": "https://aotuzuche.github.io/automs",
-  "bin": {
-    "automs": "bin/index.js"
-  },
-  "dependencies": {
-    "@automs/tools": "^1.0.0",
-    "@automs/webpack": "^1.0.0",
-    "ejs": "^3.1.6",
-    "fs-extra": "^10.0.0"
-  },
   "devDependencies": {
     "commitizen": "^4.2.4",
     "conventional-changelog": "^3.1.24",
@@ -34,10 +27,11 @@
     "doc": "cd ./document && yarn start",
     "version": "yarn log && git add CHANGELOG.md",
     "log": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
-    "test": "cd ./example && node ../bin/index.js start",
+    "test": "cd ./example && automs help",
     "doctor": "automs doctor",
-    "eslint": "eslint --ext .js, bin scripts packages",
+    "eslint": "eslint --ext .js, scripts packages",
     "prettier": "prettier -c --write '**/*'",
+    "ps": "./node_modules/lerna/cli.js publish",
     "prepare": "husky install"
   },
   "files": [

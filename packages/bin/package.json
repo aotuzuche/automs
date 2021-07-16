@@ -1,0 +1,24 @@
+{
+  "name": "@automs/bin",
+  "private": false,
+  "version": "1.0.0",
+  "description": "The bin for automs",
+  "bin": {
+    "automs": "commands/index.js"
+  },
+  "dependencies": {
+    "fs-extra": "^10.0.0"
+  },
+  "files": [
+    "commands"
+  ],
+  "engines": {
+    "node": ">=12.15.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "author": "eason.chiu@atzuche",
+  "repository": "git@github.com:aotuzuche/automs.git",
+  "license": "MIT"
+}

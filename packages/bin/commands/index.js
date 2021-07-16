@@ -2,9 +2,10 @@
 
 const path = require('path')
 const spawn = require('cross-spawn')
-const env = require('@automs/tools/libs/dotenv')
-const packageVersion = require('@automs/tools/libs/packageVersion')
-const checkCliVersion = require('@automs/tools/scripts/checkCliVersion')
+const env = require('../../tools/libs/dotenv')
+const packageVersion = require('../../tools/libs/packageVersion')
+const checkCliVersion = require('../../tools/scripts/checkCliVersion')
+const updatePackages = require('../../tools/scripts/updatePackages')
 
 // console.log(process.versions.node)
 
@@ -52,6 +53,9 @@ const main = async args => {
     console.log(v)
     return
   }
+
+  // 如果webpack或tools包不是最新，升级
+  await updatePackages()
 
   // start、build、depoly时注入环境变量
   if (command.name === 'start') {
@@ -116,7 +120,7 @@ const printHelp = () => {
 
 const spawnBin = (script, args) => {
   const a = args && Array.isArray(args) ? [...args] : args !== void 0 ? [args] : []
-  const res = spawn.sync(process.execPath, [path.resolve(__dirname, '..', 'bin', script), ...a], {
+  const res = spawn.sync(process.execPath, [path.resolve('@automs/bin/commands', script), ...a], {
     stdio: 'inherit',
   })
   if (res.status !== 0 && res.error) {

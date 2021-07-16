@@ -1,14 +1,12 @@
-const logger = require('@automs/tools/libs/logger')
-const addPackageScripts = require('@automs/tools/scripts/addPackageScripts')
-const updateTemplate = require('@automs/tools/scripts/updateTemplate')
-const updatePackages = require('@automs/tools/scripts/updatePackages')
+const logger = require('../../tools/libs/logger')
+const addPackageScripts = require('../../tools/scripts/addPackageScripts')
+const updateTemplate = require('../../tools/scripts/updateTemplate')
 
 const main = async () => {
   try {
     logger.spin('开始检查')
     await addPackageScripts()
     await updateTemplate()
-    await updatePackages()
     // 检查component名是否与目录名相同, component是否在该在的目录内
     // 检查子组件是否为纯函数
     // 检查根css名是否有冲突, 检查css名是否有大写, 根css不能x-开头

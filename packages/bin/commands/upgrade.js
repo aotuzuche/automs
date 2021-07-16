@@ -1,5 +1,5 @@
-const checkIsWorkspace = require('@automs/tools/scripts/checkIsWorkspace')
-const updateCli = require('@automs/tools/scripts/updateCli')
+const checkIsWorkspace = require('../../tools/scripts/checkIsWorkspace')
+const updateCli = require('../../tools/scripts/updateCli')
 
 const main = async () => {
   try {
