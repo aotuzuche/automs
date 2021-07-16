@@ -4,7 +4,7 @@
   "workspaces": [
     "packages/*"
   ],
-  "version": "1.0.6",
+  "version": "0.0.0",
   "description": "",
   "homepage": "https://aotuzuche.github.io/automs",
   "devDependencies": {

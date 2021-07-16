@@ -1,8 +1,8 @@
 {
-  "name": "@automs/bin",
+  "name": "automs",
   "private": false,
   "version": "1.1.2",
-  "description": "The bin for automs",
+  "description": "The cli for automs",
   "bin": {
     "automs": "commands/index.js"
   },
