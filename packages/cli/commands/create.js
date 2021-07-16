@@ -7,6 +7,7 @@ const askCreateQuestions = require('@automs/tools/scripts/askCreateQuestions')
 const checkIsWorkspace = require('@automs/tools/scripts/checkIsWorkspace')
 const logger = require('@automs/tools/libs/logger')
 const paths = require('@automs/tools/libs/paths')
+require('@automs/template')
 
 const main = async () => {
   try {
@@ -59,7 +60,7 @@ const main = async () => {
 }
 
 const createFile = (p, data, name) => {
-  const f = path.resolve(paths.templates, 'create_page', p)
+  const f = path.resolve(paths.template, 'create_page', p)
 
   if (fs.existsSync(f)) {
     const str = String(fs.readFileSync(f))
