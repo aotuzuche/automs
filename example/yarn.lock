@@ -2,7 +2,12 @@
 # yarn lockfile v1
 
 
-"@automs/tools@^1.1.7":
+"@automs/template@^1.1.11":
+  version "1.1.11"
+  resolved "https://registry.yarnpkg.com/@automs/template/-/template-1.1.11.tgz#a539d98cc5e533b14d5897620434a11ae195fb4a"
+  integrity sha512-HO2sbG5BTPqqdsRe8OkLW7A+FdkoYdRTH4epVzIGMml7kzQKvUGsVnrThwcRIjP79c54m+u5+JH/65CFOY7q8A==
+
+"@automs/tools@^1.1.10", "@automs/tools@^1.1.7":
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/@automs/tools/-/tools-1.1.7.tgz#490c154cd57d3139b199fa73bd2bd3122f8a11f1"
   integrity sha512-InfYdZnzHu8EUUw9/jOK3qzueeLAXoC7k/EMeEe5ukbgDJkq+AH3T2zh4wd4JsXzE++SxPynp046lZkTW9zLig==
@@ -16,7 +21,7 @@
     inquirer "^8.1.2"
     ora "^5.4.1"
 
-"@automs/webpack@^1.1.7":
+"@automs/webpack@^1.1.10":
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/@automs/webpack/-/webpack-1.1.7.tgz#fdcdfab2e0a765cb792d4b8a67038b28951aaae3"
   integrity sha512-J/UAJPphuGWx+NBCKgOVEa8zapNdWyCqNzNNcT0TLbu6e/DTOec93MBviYZCOjqA7UBcd+2QX8QUvWTytwMJIg==
@@ -486,13 +491,14 @@ atob@^2.1.2:
   resolved "https://registry.npm.taobao.org/atob/download/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha1-bZUX654DDSQ2ZmZR6GvZ9vE1M8k=
 
-automs@^1.1.7:
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/automs/-/automs-1.1.7.tgz#a6abc6d0064e05ad121addc016ff3114de34eaa0"
-  integrity sha512-WTG1qZMJTFSrpwhtoclq8FMtYelFD5ZsdadtbfbnxCt1BArKOAyW7kxD1/pPXA28sdZ19PIXg8/wvbTnRJgO3g==
+automs@^1.1.11:
+  version "1.1.11"
+  resolved "https://registry.yarnpkg.com/automs/-/automs-1.1.11.tgz#64d955bc35511f1b6752c737abbe66577742f512"
+  integrity sha512-PMVr3sH8cjB+jYf8E8nwjYm+yvyyjz22MKytMcbBx03sCd3t7hvj9KQCeDRRzyOyDidKvOSDMNRasPmCzJlQUQ==
   dependencies:
-    "@automs/tools" "^1.1.7"
-    "@automs/webpack" "^1.1.7"
+    "@automs/template" "^1.1.11"
+    "@automs/tools" "^1.1.10"
+    "@automs/webpack" "^1.1.10"
     fs-extra "^10.0.0"
 
 balanced-match@^1.0.0:

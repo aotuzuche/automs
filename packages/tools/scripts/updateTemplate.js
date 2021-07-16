@@ -32,7 +32,6 @@ const resetFile = (name, replaceDot = true) => {
   const fileExist = fs.existsSync(file)
 
   if (!fs.existsSync(template) || !fs.existsSync(paths.appSrc)) {
-    console.log('ee', template)
     return
   }
 

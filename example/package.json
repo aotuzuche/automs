@@ -9,6 +9,6 @@
   "author": "Eason chiu <76670758@qq.com>",
   "license": "ISC",
   "devDependencies": {
-    "automs": "^1.1.7"
+    "automs": "^1.1.11"
   }
 }
