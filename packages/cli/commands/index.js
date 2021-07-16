@@ -120,7 +120,7 @@ const printHelp = () => {
 
 const spawnBin = (script, args) => {
   const a = args && Array.isArray(args) ? [...args] : args !== void 0 ? [args] : []
-  const res = spawn.sync(process.execPath, [path.resolve('automs/commands', script), ...a], {
+  const res = spawn.sync(process.execPath, [path.resolve(__dirname, script), ...a], {
     stdio: 'inherit',
   })
   if (res.status !== 0 && res.error) {

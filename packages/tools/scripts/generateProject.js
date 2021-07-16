@@ -9,7 +9,8 @@ const generateProject = projectPath => {
     license: 'MIT',
   }
 
-  fs.writeJSONSync(path.resolve(projectPath, 'package.json'), pkg)
+  const packageJson = path.resolve(projectPath, 'package.json')
+  fs.writeFileSync(packageJson, JSON.stringify(pkg, void 0, 2))
 
   console.log(process.cwd())
   console.log(__dirname)
