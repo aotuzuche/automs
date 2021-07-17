@@ -1,0 +1,31 @@
+{
+  "name": "@automs/tools",
+  "private": false,
+  "version": "1.1.13",
+  "description": "The tools for automs",
+  "dependencies": {
+    "ali-oss": "^6.16.0",
+    "chalk": "^4.1.1",
+    "cross-spawn": "^7.0.3",
+    "dotenv": "^10.0.0",
+    "dotenv-expand": "^5.1.0",
+    "ejs": "^3.1.6",
+    "fs-extra": "^10.0.0",
+    "inquirer": "^8.1.2",
+    "ora": "^5.4.1"
+  },
+  "files": [
+    "scripts",
+    "libs"
+  ],
+  "engines": {
+    "node": ">=12.15.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "author": "eason.chiu@atzuche",
+  "repository": "git@github.com:aotuzuche/automs.git",
+  "license": "MIT",
+  "gitHead": "450f2f82e51cc930507c707545ac68bfa1770b7e"
+}

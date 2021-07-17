@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "doctor": "automs doctor"
+  },
   "author": "Eason chiu <76670758@qq.com>",
   "license": "ISC",
   "devDependencies": {
-    "@automs/template": "^1.0.6",
-    "automs": "^1.0.1"
+    "automs": "^1.1.11"
   }
 }

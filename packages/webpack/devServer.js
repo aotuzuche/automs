@@ -1,6 +1,6 @@
 const webpack = require('webpack')
 const WebpackDevServer = require('webpack-dev-server')
-const webpackConfig = require('../webpack/config')
+const webpackConfig = require('./config')
 
 const webpackDevServer = async () => {
   process.env.BABEL_ENV = 'development'

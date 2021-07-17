@@ -1,10 +1,10 @@
 #!/usr/bin/env node
-
 const path = require('path')
-const spawn = require('../libs/spawn')
-const env = require('../libs/dotenv')
-const packageVersion = require('../libs/packageVersion')
-const checkCliVersion = require('../scripts/checkCliVersion')
+const spawn = require('cross-spawn')
+const env = require('@automs/tools/libs/dotenv')
+const packageVersion = require('@automs/tools/libs/packageVersion')
+const checkCliVersion = require('@automs/tools/scripts/checkCliVersion')
+const updatePackages = require('@automs/tools/scripts/updatePackages')
 
 // console.log(process.versions.node)
 
@@ -44,7 +44,7 @@ const main = async args => {
   if (command.name === 'version') {
     let v = packageVersion.local('automs')
     if (!v) {
-      const p = require(path.resolve(__dirname, '..', 'package.json'))
+      const p = require(path.resolve(__dirname, 'package.json'))
       if (p && p.version) {
         v = p.version
       }
@@ -52,6 +52,9 @@ const main = async args => {
     console.log(v)
     return
   }
+
+  // 如果webpack或tools包不是最新，升级
+  await updatePackages()
 
   // start、build、depoly时注入环境变量
   if (command.name === 'start') {
@@ -66,7 +69,7 @@ const main = async args => {
   }
 
   // 执行脚本
-  const result = spawn.bin(command.name, command.extra)
+  const result = spawnCommand(command.name, command.extra)
 
   if (result.signal) {
     if (result.signal === 'SIGKILL') {
@@ -112,6 +115,17 @@ const printHelp = () => {
     const name = `${c.name}${c.extra ? `:${c.extra}` : ''}${c.alias ? `, ${c.alias}` : ''}`
     console.log(`  ${`${name}${' '.repeat(20)}`.substr(0, 22)}${c.desc}`)
   })
+}
+
+const spawnCommand = (script, args) => {
+  const a = args && Array.isArray(args) ? [...args] : args !== void 0 ? [args] : []
+  const res = spawn.sync(process.execPath, [path.resolve(__dirname, 'commands', script), ...a], {
+    stdio: 'inherit',
+  })
+  if (res.status !== 0 && res.error) {
+    console.error(res.error)
+  }
+  return res
 }
 
 module.exports = main(process.argv.slice(2))

@@ -1,12 +1,20 @@
 {
-  "name": "@automs/template",
+  "name": "automs",
   "private": false,
-  "version": "1.1.12",
-  "description": "The template for automs",
+  "version": "1.1.14",
+  "description": "The cli for automs",
+  "bin": {
+    "automs": "./index.js"
+  },
+  "dependencies": {
+    "@automs/template": "^1.1.12",
+    "@automs/tools": "^1.1.13",
+    "@automs/webpack": "^1.1.13",
+    "fs-extra": "^10.0.0"
+  },
   "files": [
     "index.js",
-    "create_page",
-    "init"
+    "commands"
   ],
   "engines": {
     "node": ">=12.15.0"

@@ -1,11 +1,10 @@
-const paths = require('../libs/paths')
+const paths = require('@automs/tools/libs/paths')
 const path = require('path')
 const TerserPlugin = require('terser-webpack-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
-const PnpWebpackPlugin = require('pnp-webpack-plugin')
-const ModuleScopePlugin = require('./plugins/ModuleScopePlugin')
+const ModuleScopePlugin = require('../plugins/ModuleScopePlugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
-const { transformer, formatter } = require('./libs/index')
+const { transformer, formatter } = require('../libs/index')
 
 const webpackConfig = mode => {
   const isEnvDevelopment = mode === 'development'
@@ -280,10 +279,6 @@ const webpackConfig = mode => {
       },
 
       plugins: [
-        // Adds support for installing with Plug'n'Play, leading to faster installs and adding
-        // guards against forgotten dependencies and such.
-        PnpWebpackPlugin,
-
         // Prevents users from importing files from outside of src/ (or node_modules/).
         // This often causes confusion because we only process files within src/ with babel.
         // To fix this, we prevent you from importing files out of src/ -- if you'd like to,
@@ -294,11 +289,7 @@ const webpackConfig = mode => {
     },
 
     resolveLoader: {
-      plugins: [
-        // Also related to Plug'n'Play, but this time it tells webpack to load its loaders
-        // from the current package.
-        PnpWebpackPlugin.moduleLoader(module),
-      ],
+      plugins: [],
     },
 
     // Turn off performance processing because we utilize

@@ -1,4 +1,4 @@
-const webpackBuild = require('../scripts/webpackBuild')
+const webpackBuild = require('@automs/webpack/build')
 
 const main = async args => {
   try {

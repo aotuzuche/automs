@@ -14,7 +14,6 @@ const checkCliVersion = async () => {
   // 本地没有安装时不检测
   const local = packageVersion.local('automs')
   if (!local) {
-    console.log('未安装 automs')
     return
   }
 

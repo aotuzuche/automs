@@ -1,34 +1,11 @@
 {
   "name": "automs",
-  "private": false,
-  "version": "1.0.3",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "description": "",
-  "main": "bin/index.js",
   "homepage": "https://aotuzuche.github.io/automs",
-  "bin": {
-    "automs": "bin/index.js"
-  },
-  "dependencies": {
-    "ali-oss": "^6.15.2",
-    "chalk": "^4.1.1",
-    "commander": "^8.0.0",
-    "cross-spawn": "^7.0.3",
-    "css-minimizer-webpack-plugin": "^3.0.2",
-    "dotenv": "^10.0.0",
-    "dotenv-expand": "^5.1.0",
-    "ejs": "^3.1.6",
-    "friendly-errors-webpack-plugin": "^1.7.0",
-    "fs-extra": "^10.0.0",
-    "inquirer": "^8.1.1",
-    "ora": "^5.4.1",
-    "pnp-webpack-plugin": "^1.6.4",
-    "source-map-loader": "^3.0.0",
-    "terser-webpack-plugin": "^5.1.4",
-    "typescript": "^4.3.5",
-    "url-loader": "^4.1.1",
-    "webpack": "^5.41.0",
-    "webpack-dev-server": "^3.11.2"
-  },
   "devDependencies": {
     "commitizen": "^4.2.4",
     "conventional-changelog": "^3.1.24",
@@ -39,26 +16,26 @@
     "eslint-plugin-prettier": "^3.4.0",
     "git-cz": "^4.7.6",
     "husky": "^6.0.0",
+    "lerna": "^4.0.0",
     "lint-staged": "^11.0.0",
     "np": "^7.5.0",
-    "prettier": "^2.3.2"
+    "prettier": "^2.3.2",
+    "typescript": "^4.3.5"
   },
   "scripts": {
     "doc": "cd ./document && yarn start",
     "version": "yarn log && git add CHANGELOG.md",
     "log": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
-    "test": "cd ./example && node ../bin/index.js init",
-    "doctor": "cd ./example && node ../bin/index.js doctor",
-    "eslint": "eslint --ext .js, bin libs scripts webpack",
+    "test": "cd ./example && ../packages/cli/commands/index.js init",
+    "eslint": "eslint --ext .js, scripts packages",
     "prettier": "prettier -c --write '**/*'",
+    "ps": "sh ./scripts/publish.sh",
+    "push": "sh ./scripts/push.sh",
     "prepare": "husky install"
   },
   "files": [
-    "bin",
-    "libs",
     "packages",
-    "scripts",
-    "webpack"
+    "scripts"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
