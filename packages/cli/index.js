@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 const path = require('path')
 const spawn = require('cross-spawn')
 const env = require('@automs/tools/libs/dotenv')
@@ -45,7 +44,7 @@ const main = async args => {
   if (command.name === 'version') {
     let v = packageVersion.local('automs')
     if (!v) {
-      const p = require(path.resolve(__dirname, '..', 'package.json'))
+      const p = require(path.resolve(__dirname, 'package.json'))
       if (p && p.version) {
         v = p.version
       }
@@ -70,7 +69,7 @@ const main = async args => {
   }
 
   // 执行脚本
-  const result = spawnBin(command.name, command.extra)
+  const result = spawnCommand(command.name, command.extra)
 
   if (result.signal) {
     if (result.signal === 'SIGKILL') {
@@ -118,9 +117,9 @@ const printHelp = () => {
   })
 }
 
-const spawnBin = (script, args) => {
+const spawnCommand = (script, args) => {
   const a = args && Array.isArray(args) ? [...args] : args !== void 0 ? [args] : []
-  const res = spawn.sync(process.execPath, [path.resolve(__dirname, script), ...a], {
+  const res = spawn.sync(process.execPath, [path.resolve(__dirname, 'commands', script), ...a], {
     stdio: 'inherit',
   })
   if (res.status !== 0 && res.error) {
