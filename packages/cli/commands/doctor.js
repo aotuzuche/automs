@@ -15,6 +15,7 @@ const main = async () => {
     // 检查循环组件是否用index
     // 检查function
     // 检查无用的reducer effect
+    // effect和reducer生成相应的.d.ts文件来约束 dispatch
     // 能用@引用的地方尽量改为@
     // 检查model的namespace是否冲突
     logger.succeed('检查完成')

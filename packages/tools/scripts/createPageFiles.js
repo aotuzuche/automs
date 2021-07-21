@@ -50,7 +50,7 @@ const createPageFiles = data => {
 }
 
 const createFile = (p, data, name) => {
-  const template = path.resolve(require.resolve('@automs/template').replace(/index\.js$/, ''))
+  const template = path.resolve(require.resolve('@automs/template'), '..')
   const f = path.resolve(template, 'create_page', p)
 
   if (fs.existsSync(f)) {

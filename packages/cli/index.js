@@ -2,11 +2,9 @@
 const path = require('path')
 const spawn = require('cross-spawn')
 const env = require('@automs/tools/libs/dotenv')
+const logger = require('@automs/tools/libs/logger')
 const packageVersion = require('@automs/tools/libs/packageVersion')
 const checkCliVersion = require('@automs/tools/scripts/checkCliVersion')
-const updatePackages = require('@automs/tools/scripts/updatePackages')
-
-// console.log(process.versions.node)
 
 const commands = [
   { name: 'init', alias: '-i', desc: '创建项目' },
@@ -24,10 +22,17 @@ const commands = [
 ]
 
 const main = async args => {
+  const nodev = parseInt(process.versions.node.split('.')[0] || '0', 10)
+
+  if (nodev < 12) {
+    logger.error('node 版本过低，请升级至 12 以上版本')
+    return
+  }
+
   const command = getCommand(args)
 
   if (!command) {
-    console.log('未知命令，请使用 automs help 查看帮助文档')
+    logger.error('未知命令，请使用 automs help 查看帮助文档')
     return
   }
 
@@ -42,19 +47,16 @@ const main = async args => {
   }
 
   if (command.name === 'version') {
-    let v = packageVersion.local('automs')
-    if (!v) {
-      const p = require(path.resolve(__dirname, 'package.json'))
-      if (p && p.version) {
-        v = p.version
-      }
-    }
-    console.log(v)
+    const cli = packageVersion.local('automs')
+    const tp = packageVersion.local('@automs/template')
+    const to = packageVersion.local('@automs/tools')
+    const wp = packageVersion.local('@automs/webpack')
+    console.log(`automs ${cli} • https://github.com/aotuzuche/automs`)
+    console.log(`  @automs/template ${tp}`)
+    console.log(`  @automs/tools ${to}`)
+    console.log(`  @automs/webpack ${wp}`)
     return
   }
-
-  // 如果webpack或tools包不是最新，升级
-  await updatePackages()
 
   // start、build、depoly时注入环境变量
   if (command.name === 'start') {
@@ -64,9 +66,7 @@ const main = async args => {
   }
 
   // check automs last version
-  if (command.name !== 'init') {
-    await checkCliVersion()
-  }
+  await checkCliVersion()
 
   // 执行脚本
   const result = spawnCommand(command.name, command.extra)
@@ -110,7 +110,7 @@ const getCommand = args => {
 }
 
 const printHelp = () => {
-  console.log('可用命令：')
+  console.log('Available commands:')
   commands.forEach(c => {
     const name = `${c.name}${c.extra ? `:${c.extra}` : ''}${c.alias ? `, ${c.alias}` : ''}`
     console.log(`  ${`${name}${' '.repeat(20)}`.substr(0, 22)}${c.desc}`)

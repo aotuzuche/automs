@@ -18,7 +18,7 @@ class Logger {
     if (this.spinner.isSpinning) {
       this.spinner.stop()
     }
-    this.log(`🚫 ${chalk.red(message)}`)
+    this.log(`${chalk.red(message)}`)
   }
 
   errorWithExit(message) {
