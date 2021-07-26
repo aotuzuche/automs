@@ -1,3 +1,4 @@
+const logger = require('@automs/tools/libs/logger')
 const checkIsWorkspace = require('@automs/tools/scripts/checkIsWorkspace')
 const updateCli = require('@automs/tools/scripts/updateCli')
 
@@ -10,7 +11,7 @@ const main = async () => {
 
     await updateCli()
   } catch (err) {
-    console.log(err.message)
+    logger.errorWithExit(err.message)
   }
 }
 

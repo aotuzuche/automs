@@ -2,7 +2,7 @@ const fs = require('fs-extra')
 const paths = require('../libs/paths')
 
 // 携带public下额外文件至打包目录
-const publicPayload = () => {
+const copyPublicFolder = () => {
   if (!fs.existsSync(paths.appBuild) || !fs.existsSync(paths.appPublic)) {
     return
   }
@@ -17,4 +17,4 @@ const publicPayload = () => {
   })
 }
 
-module.exports = publicPayload
+module.exports = copyPublicFolder

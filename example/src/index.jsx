@@ -1,5 +1,5 @@
 import './test'
-import '@/components/index'
+// import '@/components/index'
 // import './img'
 // import './style'
 

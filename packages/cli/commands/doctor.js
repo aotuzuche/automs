@@ -1,11 +1,15 @@
 const logger = require('@automs/tools/libs/logger')
-const addPackageScripts = require('@automs/tools/scripts/addPackageScripts')
+const checkIsWorkspace = require('@automs/tools/scripts/checkIsWorkspace')
 const updateTemplate = require('@automs/tools/scripts/updateTemplate')
 
 const main = async () => {
   try {
+    // 检查当前环境
+    if (!checkIsWorkspace()) {
+      return
+    }
+
     logger.spin('开始检查')
-    await addPackageScripts()
     await updateTemplate()
     // 检查component名是否与目录名相同, component是否在该在的目录内
     // 检查子组件是否为纯函数
@@ -20,7 +24,7 @@ const main = async () => {
     // 检查model的namespace是否冲突
     logger.succeed('检查完成')
   } catch (err) {
-    console.log(err.message)
+    logger.errorWithExit(err.message)
   }
 }
 

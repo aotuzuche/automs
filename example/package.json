@@ -9,6 +9,22 @@
   "author": "Eason chiu <76670758@qq.com>",
   "license": "ISC",
   "devDependencies": {
-    "automs": "^1.1.11"
+    "automs": "^1.1.14",
+    "babel-plugin-import": "^1.13.3"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "react": "^17.0.2"
   }
 }

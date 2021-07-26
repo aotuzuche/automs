@@ -1,5 +1,6 @@
 const fs = require('fs-extra')
 const path = require('path')
+const os = require('os')
 
 const generateProject = projectPath => {
   const pkg = {
@@ -10,7 +11,7 @@ const generateProject = projectPath => {
   }
 
   const packageJson = path.resolve(projectPath, 'package.json')
-  fs.writeFileSync(packageJson, JSON.stringify(pkg, void 0, 2))
+  fs.writeFileSync(packageJson, JSON.stringify(pkg, null, 2) + os.EOL)
 
   console.log(process.cwd())
   console.log(__dirname)
