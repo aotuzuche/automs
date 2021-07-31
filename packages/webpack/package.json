@@ -6,6 +6,7 @@
   "dependencies": {
     "@automs/tools": "^1.1.13",
     "chalk": "^4.1.1",
+    "dmvars-loader": "^1.1.0",
     "fs-extra": "^10.0.0",
     "react-scripts": "^4.0.3",
     "webpack-merge": "^5.8.0"
@@ -26,5 +27,9 @@
   "author": "eason.chiu@atzuche",
   "repository": "git@github.com:aotuzuche/automs.git",
   "license": "MIT",
-  "gitHead": "450f2f82e51cc930507c707545ac68bfa1770b7e"
+  "gitHead": "450f2f82e51cc930507c707545ac68bfa1770b7e",
+  "devDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
 }

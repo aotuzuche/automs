@@ -1,6 +1,11 @@
-import './test'
-// import '@/components/index'
-// import './img'
-// import './style'
+import React from 'react'
+import ReactDom from 'react-dom'
+import './style'
 
-console.log(111)
+class App extends React.Component {
+  render() {
+    return <div>1</div>
+  }
+}
+
+ReactDom.render(<App />, document.getElementById('root'))

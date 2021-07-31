@@ -13,15 +13,18 @@ const webpackBuild = async (mode = 'prod') => {
     throw new Error('缺少打包需要的入口文件')
   }
 
-  // process.on('unhandledRejection', err => {
-  //   throw err
-  // })
+  process.on('unhandledRejection', err => {
+    throw err
+  })
+
+  process.env.BABEL_ENV = 'production'
+  process.env.NODE_ENV = 'production'
 
   // 开始打包
   build(mode)
     .then(res => {
       console.log('')
-      logger.succeed(res)
+      logger.succeed(res || '打包完成')
       console.log('')
     })
     .catch(err => {

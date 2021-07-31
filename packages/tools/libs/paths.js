@@ -54,6 +54,8 @@ const paths = {
   appProdHtml: resolveApp('public/index.prod.html'),
   appSrc: resolveApp('src'),
   appIndexJs: resolveModule(resolveApp, 'src/index'),
+  appTsConfig: resolveApp('tsconfig.json'),
+  appJsConfig: resolveApp('jsconfig.json'),
   yarnLockFile: resolveApp('yarn.lock'),
   appNodeModules: resolveApp('node_modules'),
   template: resolveApp('node_modules/@automs/template'),

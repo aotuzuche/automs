@@ -66,6 +66,8 @@ const main = async args => {
       command.extra === 'test'
     ) {
       env.inject('test')
+    } else {
+      env.inject('base')
     }
 
     // check automs last version
