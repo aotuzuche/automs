@@ -14,14 +14,15 @@ const { checkBrowsers } = require('react-dev-utils/browsersHelper')
 const webpackConfig = require('./config')
 
 const webpackBuild = async (mode = 'prod') => {
-  if (
-    !checkRequiredFiles([mode === 'prod' ? paths.appProdHtml : paths.appDevHtml, paths.appIndexJs])
-  ) {
+  const isProd = mode === 'prod'
+
+  if (!checkRequiredFiles([isProd ? paths.appProdHtml : paths.appDevHtml, paths.appIndexJs])) {
     throw new Error('缺少打包需要的入口文件')
   }
 
   process.env.BABEL_ENV = 'production'
   process.env.NODE_ENV = 'production'
+  process.env.REACT_APP_PACKAGE = isProd ? 'prod' : 'dev'
 
   process.on('unhandledRejection', err => {
     throw err
@@ -41,11 +42,6 @@ const webpackBuild = async (mode = 'prod') => {
   const WARN_AFTER_CHUNK_GZIP_SIZE = 1024 * 1024
 
   const isInteractive = process.stdout.isTTY
-
-  // Warn and crash if required files are missing
-  if (!checkRequiredFiles([paths.appProdHtml, paths.appIndexJs])) {
-    process.exit(1)
-  }
 
   // Generate configuration
   const config = webpackConfig('prod')

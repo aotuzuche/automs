@@ -6,7 +6,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const webpackConfig = mode => {
   const isProd = mode === 'prod'
-  process.env.REACT_APP_PACKAGE = isProd ? 'prod' : 'dev'
 
   const config = require('react-scripts/config/webpack.config')(
     isProd ? 'production' : 'development',
@@ -15,7 +14,8 @@ const webpackConfig = mode => {
   // 修改插件配置
   config.plugins.forEach(p => {
     if (p instanceof HtmlWebpackPlugin && p.options) {
-      p.options.template = mode === 'prod' ? paths.appProdHtml : paths.appDevHtml
+      p.options.template =
+        process.env.REACT_APP_PACKAGE === 'prod' ? paths.appProdHtml : paths.appDevHtml
       // 为了保留卡槽，所以注释保留
       p.options.minify.removeComments = false
     } else if (p instanceof MiniCssExtractPlugin && p.options) {
