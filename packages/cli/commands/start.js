@@ -1,5 +1,6 @@
 const logger = require('@automs/tools/libs/logger')
 const checkIsWorkspace = require('@automs/tools/scripts/checkIsWorkspace')
+const generateCreateApp = require('@automs/tools/scripts/generateCreateApp')
 const webpackDevServer = require('@automs/webpack/devServer')
 
 const main = async () => {
@@ -8,6 +9,8 @@ const main = async () => {
     if (!checkIsWorkspace()) {
       return
     }
+
+    await generateCreateApp()
 
     await webpackDevServer()
   } catch (err) {

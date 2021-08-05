@@ -1,7 +1,10 @@
+const fs = require('fs-extra')
 const logger = require('@automs/tools/libs/logger')
+const paths = require('@automs/tools/libs/paths')
 const checkIsWorkspace = require('@automs/tools/scripts/checkIsWorkspace')
 const copyPublicFolder = require('@automs/tools/scripts/copyPublicFolder')
 const uploadOss = require('@automs/tools/scripts/uploadOss')
+const webpackBuild = require('@automs/webpack/build')
 
 const main = async args => {
   try {
@@ -10,8 +13,11 @@ const main = async args => {
       return
     }
 
+    fs.emptyDirSync(paths.appBuild)
+
     await copyPublicFolder()
-    await uploadOss(args[0])
+    await webpackBuild(args[0] === 'test' ? 'test' : 'prod')
+    await uploadOss(args[0] === 'test' ? 'test' : 'prod')
   } catch (err) {
     logger.errorWithExit(err.message)
   }

@@ -130,7 +130,6 @@ const printHelp = () => {
 
 const spawnCommand = (script, args) => {
   const a = args && Array.isArray(args) ? [...args] : args !== void 0 ? [args] : []
-  console.log(path.resolve(__dirname, 'commands', script))
   const res = spawn.sync(process.execPath, [path.resolve(__dirname, 'commands', script), ...a], {
     stdio: 'inherit',
   })

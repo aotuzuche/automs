@@ -1,11 +1,7 @@
-import React from 'react'
-import ReactDom from 'react-dom'
-import './style'
+import createApp from 'automs/createApp'
 
-class App extends React.Component {
-  render() {
-    return <div>1</div>
-  }
-}
-
-ReactDom.render(<App />, document.getElementById('root'))
+createApp({
+  basename: '/',
+  defaultRoute: '',
+  complete: app => app.start('#root'),
+})

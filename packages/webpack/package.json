@@ -14,9 +14,7 @@
   "files": [
     "devServer.js",
     "build.js",
-    "config",
-    "plugins",
-    "libs"
+    "config"
   ],
   "engines": {
     "node": ">=12.15.0"

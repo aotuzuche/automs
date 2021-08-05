@@ -12,13 +12,10 @@ const main = async args => {
       return
     }
 
-    process.env.BABEL_ENV = 'production'
-    process.env.NODE_ENV = 'production'
-
     fs.emptyDirSync(paths.appBuild)
 
     await copyPublicFolder()
-    await webpackBuild(args[1])
+    await webpackBuild(args[0] === 'test' ? 'test' : 'prod')
   } catch (err) {
     logger.errorWithExit(err.message)
   }

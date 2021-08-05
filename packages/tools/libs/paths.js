@@ -59,6 +59,15 @@ const paths = {
   yarnLockFile: resolveApp('yarn.lock'),
   appNodeModules: resolveApp('node_modules'),
   template: resolveApp('node_modules/@automs/template'),
+  find: (p, extensions) => {
+    const ext = extensions.find(ext => fs.existsSync(`${p}.${ext}`))
+
+    if (ext) {
+      return `${p}.${ext}`
+    }
+
+    return void 0
+  },
 }
 
 module.exports = paths
