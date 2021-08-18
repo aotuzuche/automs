@@ -59,19 +59,23 @@ const main = async args => {
     }
 
     // start、build、depoly时注入环境变量
-    if (command.name === 'start') {
-      env.inject('dev')
-    } else if (
-      (command.name === 'build' || command.name === 'deploy') &&
-      command.extra === 'test'
-    ) {
-      env.inject('test')
-    } else {
-      env.inject('base')
+    if (command.name !== 'init') {
+      if (command.name === 'start') {
+        env.inject('dev')
+      } else if (
+        (command.name === 'build' || command.name === 'deploy') &&
+        command.extra === 'test'
+      ) {
+        env.inject('test')
+      } else {
+        env.inject('base')
+      }
     }
 
     // check automs last version
-    await checkCliVersion()
+    if (command.name !== 'init') {
+      await checkCliVersion()
+    }
 
     // fix package.json
     if (command.name !== 'init') {
