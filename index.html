@@ -14,12 +14,12 @@
         padding-top: 100px;
       }
     </style>
-    <link rel="stylesheet" href="/automs/umi.ca173f05.css" />
+    <link rel="stylesheet" href="/automs/umi.7c739970.css" />
     <script>
       window.routerBase = "/automs";
     </script>
     <script>
-      //! umi version: 3.5.15
+      //! umi version: 3.5.17
     </script>
     <script>
       !(function () {
@@ -28,7 +28,7 @@
           r = ["light", "dark", "auto"];
         document.documentElement.setAttribute(
           "data-prefers-color",
-          e === r[2] ? (t ? r[1] : r[0]) : r.includes(e) ? e : r[0]
+          e === r[2] ? (t ? r[1] : r[0]) : r.indexOf(e) > -1 ? e : r[0]
         );
       })();
     </script>
@@ -36,6 +36,6 @@
   <body>
     <div id="root"></div>
 
-    <script src="/automs/umi.6aafd304.js"></script>
+    <script src="/automs/umi.bd3f95df.js"></script>
   </body>
 </html>
