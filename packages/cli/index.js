@@ -74,7 +74,9 @@ const main = async args => {
     await checkCliVersion()
 
     // fix package.json
-    await fixPackageJson()
+    if (command.name !== 'init') {
+      await fixPackageJson()
+    }
 
     // 执行脚本
     const result = spawnCommand(command.name, command.extra)
