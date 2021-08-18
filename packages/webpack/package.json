@@ -9,6 +9,7 @@
     "dmvars-loader": "^1.1.0",
     "fs-extra": "^10.0.0",
     "react-scripts": "^4.0.3",
+    "sass": "^1.38.0",
     "webpack-merge": "^5.8.0"
   },
   "files": [

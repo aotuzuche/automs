@@ -1,9 +1,9 @@
 import * as React from 'react'
 import Controller from './controller'
-// import './style'
+import './style'
 
 export default class View extends Controller {
   render() {
-    return <div>index</div>
+    return <div className="page-index">index</div>
   }
 }
