@@ -13,8 +13,12 @@ const generateProject = projectPath => {
   const packageJson = path.resolve(projectPath, 'package.json')
   fs.writeFileSync(packageJson, JSON.stringify(pkg, null, 2) + os.EOL)
 
+  const template = path.resolve(require.resolve('@automs/template'), '..')
+  const initTemplate = path.resolve(template, 'init')
+
   console.log(process.cwd())
   console.log(__dirname)
+  console.log(initTemplate)
 
   // const res = spawn.sync('yarn', ['add', '@automs/template', '-D'], {
   //   stdio: 'inherit',

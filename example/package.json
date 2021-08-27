@@ -4,13 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "doctor": "automs doctor"
+    "doctor": "automs doctor",
+    "start": "automs start",
+    "upgrade": "automs upgrade"
   },
   "author": "Eason chiu <76670758@qq.com>",
   "license": "ISC",
   "devDependencies": {
     "automs": "^1.1.14",
-    "babel-plugin-import": "^1.13.3"
+    "babel-plugin-import": "^1.13.3",
+    "stylelint-config-atzuche": "^1.0.8"
   },
   "browserslist": {
     "production": [
