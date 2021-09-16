@@ -3743,10 +3743,15 @@ asynckit@^0.4.0:
   resolved "https://registry.npm.taobao.org/asynckit/download/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
   integrity sha1-x57Zf380y48robyXkLzDZkdLS3k=
 
-at-js-bridge@^1.0.22, at-js-bridge@^1.0.59:
+at-js-bridge@^1.0.22:
   version "1.0.59"
   resolved "https://registry.nlark.com/at-js-bridge/download/at-js-bridge-1.0.59.tgz#b03105a0eacf843f6a96a41bbd2b6f246d8ceb7a"
   integrity sha1-sDEFoOrPhD9qlqQbvStvJG2M63o=
+
+at-js-bridge@^1.0.60:
+  version "1.0.60"
+  resolved "https://registry.nlark.com/at-js-bridge/download/at-js-bridge-1.0.60.tgz#01b996b65abd4d47cd0b1621f1e87eccce95c2b2"
+  integrity sha1-AbmWtlq9TUfNCxYh8eh+zM6VwrI=
 
 at-least-node@^1.0.0:
   version "1.0.0"
@@ -3758,10 +3763,10 @@ atob@^2.1.2:
   resolved "https://registry.nlark.com/atob/download/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha1-bZUX654DDSQ2ZmZR6GvZ9vE1M8k=
 
-auto-libs@^0.3.57:
-  version "0.3.57"
-  resolved "https://registry.nlark.com/auto-libs/download/auto-libs-0.3.57.tgz#946cbc2f09d3d970b77058ad5613e378b5bdb889"
-  integrity sha1-lGy8LwnT2XC3cFitVhPjeLW9uIk=
+auto-libs@^0.3.62:
+  version "0.3.62"
+  resolved "https://registry.nlark.com/auto-libs/download/auto-libs-0.3.62.tgz#ea3c313c11deda377bee23c27f1f720db157417c"
+  integrity sha1-6jwxPBHe2jd77iPCfx9yDbFXQXw=
   dependencies:
     "@babel/runtime" "^7.12.5"
     at-js-bridge "^1.0.22"
@@ -15308,10 +15313,10 @@ typedarray@^0.0.6:
   resolved "https://registry.nlark.com/typedarray/download/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^4.3.5:
-  version "4.3.5"
-  resolved "https://registry.nlark.com/typescript/download/typescript-4.3.5.tgz#4d1c37cc16e893973c45a06886b7113234f119f4"
-  integrity sha1-TRw3zBbok5c8RaBohrcRMjTxGfQ=
+typescript@^4.4.3:
+  version "4.4.3"
+  resolved "https://registry.nlark.com/typescript/download/typescript-4.4.3.tgz?cache=0&sync_timestamp=1631690110768&other_urls=https%3A%2F%2Fregistry.nlark.com%2Ftypescript%2Fdownload%2Ftypescript-4.4.3.tgz#bdc5407caa2b109efd4f82fe130656f977a29324"
+  integrity sha1-vcVAfKorEJ79T4L+EwZW+XeikyQ=
 
 uglify-js@^3.1.4:
   version "3.13.10"

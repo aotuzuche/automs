@@ -10,8 +10,8 @@
     "@automs/template": "^1.1.15",
     "@automs/tools": "^1.1.19",
     "@automs/webpack": "^1.1.19",
-    "at-js-bridge": "^1.0.59",
-    "auto-libs": "^0.3.57",
+    "at-js-bridge": "^1.0.60",
+    "auto-libs": "^0.3.62",
     "dva": "^2.4.1",
     "fs-extra": "^10.0.0",
     "web-vitals": "^2.1.0"
