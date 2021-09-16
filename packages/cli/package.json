@@ -1,15 +1,15 @@
 {
   "name": "automs",
   "private": false,
-  "version": "1.1.19",
+  "version": "1.1.20",
   "description": "The cli for automs",
   "bin": {
     "automs": "./index.js"
   },
   "dependencies": {
     "@automs/template": "^1.1.15",
-    "@automs/tools": "^1.1.19",
-    "@automs/webpack": "^1.1.19",
+    "@automs/tools": "^1.1.20",
+    "@automs/webpack": "^1.1.20",
     "at-js-bridge": "^1.0.60",
     "auto-libs": "^0.3.62",
     "dva": "^2.4.1",
