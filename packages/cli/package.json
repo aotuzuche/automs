@@ -18,7 +18,8 @@
   },
   "files": [
     "index.js",
-    "commands"
+    "commands",
+    "createApp.d.ts"
   ],
   "engines": {
     "node": ">=12.15.0"
