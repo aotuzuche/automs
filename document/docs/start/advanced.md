@@ -100,7 +100,7 @@ PUBLIC_URL=https://cdn.atzuche.com/m/demo
 BUILD_PATH=build
 ```
 
-#### OSS 配置
+### OSS 配置
 
 当`PUBLIC_URL`设置为我们的 cdn 服务器后，打完包后的静态资源会自动上传至 cdn 服务器，所以需要配置相关的 OSS 配置
 
@@ -109,13 +109,59 @@ ACCESS_KEY_ID=xxxxxx
 ACCESS_KEY_SECRET=xxxxxx
 ```
 
+### 本地开发时的端口号
+
+默认端口号为`3000`，可以手动修改
+
 ```bash
-PORT
-HOST
-GENERATE_SOURCEMAP
-IMAGE_INLINE_SIZE_LIMIT
-CLEAR_OSS_FOLDER_BEFORE_UPLOAD
-PX_TO_REM
+PORT=5800
+```
+
+### sourceMap
+
+是否生成sourceMap，默认开启
+
+```bash
+# 关闭
+GENERATE_SOURCEMAP=false
+```
+
+### 图片资源最大尺寸
+
+小于该值时，打包时转为base64
+
+```bash
+IMAGE_INLINE_SIZE_LIMIT=10000
+```
+
+### 清理OSS目录
+
+是否在上传静态资源至oss服务器前清空该目录
+
+```bash
+CLEAR_OSS_FOLDER_BEFORE_UPLOAD=true
+```
+
+### px单位转为rem
+
+默认转换
+
+```bash
+PX_TO_REM=true
+```
+
+### rem比例
+
+默认1px=0.01rem，比例为100
+
+```bash
 REM_UNIT=100
+```
+
+### 性能上报
+
+默认开启
+
+```bash
 REPORT_ANALYTICS=false
 ```

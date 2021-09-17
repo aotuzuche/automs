@@ -10,6 +10,8 @@ const generateProject = projectPath => {
   createFile('_dot_babelrc', '.babelrc', projectPath)
   createFile('_dot_editorconfig', '.editorconfig', projectPath)
   createFile('_dot_env', '.env', projectPath)
+  createFile('_dot_env_dot_dev', '.env.dev', projectPath)
+  createFile('_dot_env_dot_test', '.env.test', projectPath)
   createFile('_dot_eslintrc_dot_js', '.eslintrc.js', projectPath)
   createFile('_dot_gitignore', '.gitignore', projectPath)
   createFile('_dot_lintstagedrc', '.lintstagedrc', projectPath)

@@ -5,6 +5,7 @@
     "doctor": "automs doctor",
     "start": "automs start",
     "build": "automs build",
+    "cr": "automs create",
     "up": "automs upgrade"
   },
   "author": "Eason chiu <76670758@qq.com>",
