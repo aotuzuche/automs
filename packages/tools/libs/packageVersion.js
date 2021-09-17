@@ -20,6 +20,12 @@ class PackageVersion {
 
     const exist = fs.existsSync(p)
     if (!exist) {
+      try {
+        const p = require(path.resolve(require.resolve(name), '..', 'package.json'))
+        if (p && p.version) {
+          return p.version
+        }
+      } catch (err) {}
       return ''
     }
 

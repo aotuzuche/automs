@@ -1,20 +1,25 @@
 {
   "name": "automs",
   "private": false,
-  "version": "1.1.14",
+  "version": "1.1.21",
   "description": "The cli for automs",
   "bin": {
     "automs": "./index.js"
   },
   "dependencies": {
-    "@automs/template": "^1.1.12",
-    "@automs/tools": "^1.1.13",
-    "@automs/webpack": "^1.1.13",
-    "fs-extra": "^10.0.0"
+    "@automs/template": "^1.1.21",
+    "@automs/tools": "^1.1.21",
+    "@automs/webpack": "^1.1.21",
+    "at-js-bridge": "^1.0.60",
+    "auto-libs": "^0.3.62",
+    "dva": "^2.4.1",
+    "fs-extra": "^10.0.0",
+    "web-vitals": "^2.1.0"
   },
   "files": [
     "index.js",
-    "commands"
+    "commands",
+    "createApp.d.ts"
   ],
   "engines": {
     "node": ">=12.15.0"

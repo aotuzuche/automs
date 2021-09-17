@@ -1,26 +1,21 @@
 {
   "name": "@automs/webpack",
   "private": false,
-  "version": "1.1.13",
+  "version": "1.1.21",
   "description": "The webpack config for automs",
   "dependencies": {
-    "@automs/tools": "^1.1.13",
+    "@automs/tools": "^1.1.21",
     "chalk": "^4.1.1",
-    "css-minimizer-webpack-plugin": "^3.0.2",
-    "friendly-errors-webpack-plugin": "^1.7.0",
+    "dmvars-loader": "^1.1.0",
     "fs-extra": "^10.0.0",
-    "source-map-loader": "^3.0.0",
-    "terser-webpack-plugin": "^5.1.4",
-    "url-loader": "^4.1.1",
-    "webpack": "^5.44.0",
-    "webpack-dev-server": "^3.11.2"
+    "react-scripts": "^4.0.3",
+    "sass": "^1.38.0",
+    "webpack-merge": "^5.8.0"
   },
   "files": [
     "devServer.js",
     "build.js",
-    "config",
-    "plugins",
-    "libs"
+    "config"
   ],
   "engines": {
     "node": ">=12.15.0"
@@ -31,5 +26,9 @@
   "author": "eason.chiu@atzuche",
   "repository": "git@github.com:aotuzuche/automs.git",
   "license": "MIT",
-  "gitHead": "450f2f82e51cc930507c707545ac68bfa1770b7e"
+  "gitHead": "450f2f82e51cc930507c707545ac68bfa1770b7e",
+  "devDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
 }

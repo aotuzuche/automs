@@ -4,11 +4,36 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "doctor": "automs doctor"
+    "doctor": "automs doctor",
+    "start": "automs start",
+    "upgrade": "automs upgrade"
   },
   "author": "Eason chiu <76670758@qq.com>",
   "license": "ISC",
   "devDependencies": {
-    "automs": "^1.1.11"
-  }
+    "automs": "^1.1.14",
+    "babel-plugin-import": "^1.13.3",
+    "stylelint-config-atzuche": "^1.0.8"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "auto-ui": "^2.4.47",
+    "axios": "^0.21.1",
+    "classnames": "^2.3.1",
+    "iscroll": "^5.2.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "proxy": "https://www.a.com"
 }

@@ -2,11 +2,10 @@
 const path = require('path')
 const spawn = require('cross-spawn')
 const env = require('@automs/tools/libs/dotenv')
+const logger = require('@automs/tools/libs/logger')
 const packageVersion = require('@automs/tools/libs/packageVersion')
 const checkCliVersion = require('@automs/tools/scripts/checkCliVersion')
-const updatePackages = require('@automs/tools/scripts/updatePackages')
-
-// console.log(process.versions.node)
+const fixPackageJson = require('@automs/tools/scripts/fixPackageJson')
 
 const commands = [
   { name: 'init', alias: '-i', desc: '创建项目' },
@@ -24,71 +23,89 @@ const commands = [
 ]
 
 const main = async args => {
-  const command = getCommand(args)
+  try {
+    const nodev = parseInt(process.versions.node.split('.')[0] || '0', 10)
 
-  if (!command) {
-    console.log('未知命令，请使用 automs help 查看帮助文档')
-    return
-  }
+    if (nodev < 12) {
+      throw new Error('node 版本过低，请升级至 12 以上版本')
+    }
 
-  if (command.name === 'help') {
-    printHelp()
-    return
-  }
+    const command = getCommand(args)
 
-  if (command.name === 'where') {
-    console.log(__dirname)
-    return
-  }
+    if (!command) {
+      throw new Error('未知命令，请使用 automs help 查看帮助文档')
+    }
 
-  if (command.name === 'version') {
-    let v = packageVersion.local('automs')
-    if (!v) {
-      const p = require(path.resolve(__dirname, 'package.json'))
-      if (p && p.version) {
-        v = p.version
+    if (command.name === 'help') {
+      printHelp()
+      return
+    }
+
+    if (command.name === 'where') {
+      console.log(__dirname)
+      return
+    }
+
+    if (command.name === 'version') {
+      const cli = packageVersion.local('automs')
+      const tp = packageVersion.local('@automs/template')
+      const to = packageVersion.local('@automs/tools')
+      const wp = packageVersion.local('@automs/webpack')
+      console.log(`automs ${cli} • https://github.com/aotuzuche/automs`)
+      console.log(`  @automs/template ${tp}`)
+      console.log(`  @automs/tools ${to}`)
+      console.log(`  @automs/webpack ${wp}`)
+      return
+    }
+
+    // start、build、depoly时注入环境变量
+    if (command.name !== 'init') {
+      if (command.name === 'start') {
+        env.inject('dev')
+      } else if (
+        (command.name === 'build' || command.name === 'deploy') &&
+        command.extra === 'test'
+      ) {
+        env.inject('test')
+      } else {
+        env.inject('base')
       }
     }
-    console.log(v)
-    return
-  }
 
-  // 如果webpack或tools包不是最新，升级
-  await updatePackages()
-
-  // start、build、depoly时注入环境变量
-  if (command.name === 'start') {
-    env.inject('dev')
-  } else if ((command.name === 'build' || command.name === 'deploy') && command.extra === 'test') {
-    env.inject('test')
-  }
-
-  // check automs last version
-  if (command.name !== 'init') {
-    await checkCliVersion()
-  }
-
-  // 执行脚本
-  const result = spawnCommand(command.name, command.extra)
-
-  if (result.signal) {
-    if (result.signal === 'SIGKILL') {
-      console.log(
-        'The build failed because the process exited too early. ' +
-          'This probably means the system ran out of memory or someone called ' +
-          '`kill -9` on the process.',
-      )
-    } else if (result.signal === 'SIGTERM') {
-      console.log(
-        'The build failed because the process exited too early. ' +
-          'Someone might have called `kill` or `killall`, or the system could ' +
-          'be shutting down.',
-      )
+    // check automs last version
+    if (command.name !== 'init') {
+      await checkCliVersion()
     }
-    process.exit(1)
-  }
 
-  process.exit(result.status)
+    // fix package.json
+    if (command.name !== 'init') {
+      await fixPackageJson()
+    }
+
+    // 执行脚本
+    const result = spawnCommand(command.name, command.extra)
+
+    if (result.signal) {
+      if (result.signal === 'SIGKILL') {
+        console.log(
+          'The build failed because the process exited too early. ' +
+            'This probably means the system ran out of memory or someone called ' +
+            '`kill -9` on the process.',
+        )
+      } else if (result.signal === 'SIGTERM') {
+        console.log(
+          'The build failed because the process exited too early. ' +
+            'Someone might have called `kill` or `killall`, or the system could ' +
+            'be shutting down.',
+        )
+      }
+      process.exit(1)
+    }
+
+    process.exit(result.status)
+  } catch (err) {
+    logger.errorWithExit(err.message)
+  }
 }
 
 const getCommand = args => {
@@ -110,7 +127,7 @@ const getCommand = args => {
 }
 
 const printHelp = () => {
-  console.log('可用命令：')
+  console.log('Available commands:')
   commands.forEach(c => {
     const name = `${c.name}${c.extra ? `:${c.extra}` : ''}${c.alias ? `, ${c.alias}` : ''}`
     console.log(`  ${`${name}${' '.repeat(20)}`.substr(0, 22)}${c.desc}`)

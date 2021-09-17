@@ -48,13 +48,26 @@ const paths = {
   appPath: resolveApp('.'),
   appBuild: resolveApp(process.env.BUILD_PATH || 'build'),
   appPublishUrl: ensureSlash(process.env.PUBLIC_URL, true),
-  appPublic: resolveApp('src/public'),
+  appPublic: resolveApp('public'),
   appPackageJson: resolveApp('package.json'),
+  appDevHtml: resolveApp('public/index.dev.html'),
+  appProdHtml: resolveApp('public/index.prod.html'),
   appSrc: resolveApp('src'),
   appIndexJs: resolveModule(resolveApp, 'src/index'),
+  appTsConfig: resolveApp('tsconfig.json'),
+  appJsConfig: resolveApp('jsconfig.json'),
   yarnLockFile: resolveApp('yarn.lock'),
   appNodeModules: resolveApp('node_modules'),
   template: resolveApp('node_modules/@automs/template'),
+  find: (p, extensions) => {
+    const ext = extensions.find(ext => fs.existsSync(`${p}.${ext}`))
+
+    if (ext) {
+      return `${p}.${ext}`
+    }
+
+    return void 0
+  },
 }
 
 module.exports = paths

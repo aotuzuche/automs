@@ -1,49 +1,182 @@
 const webpack = require('webpack')
 const fs = require('fs-extra')
-const logger = require('@automs/tools/libs/logger')
+const chalk = require('chalk')
 const paths = require('@automs/tools/libs/paths')
+const checkRequiredFiles = require('@automs/tools/libs/checkRequiredFiles')
+const copyPublicFolder = require('@automs/tools/scripts/copyPublicFolder')
+const verifyPackageTree = require('react-scripts/scripts/utils/verifyPackageTree')
+const verifyTypeScriptSetup = require('react-scripts/scripts/utils/verifyTypeScriptSetup')
+const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages')
+// const printHostingInstructions = require('react-dev-utils/printHostingInstructions')
+const FileSizeReporter = require('react-dev-utils/FileSizeReporter')
+const printBuildError = require('react-dev-utils/printBuildError')
+const { checkBrowsers } = require('react-dev-utils/browsersHelper')
 const webpackConfig = require('./config')
 
 const webpackBuild = async (mode = 'prod') => {
+  const isProd = mode === 'prod'
+
+  if (!checkRequiredFiles([isProd ? paths.appProdHtml : paths.appDevHtml, paths.appIndexJs])) {
+    throw new Error('缺少打包需要的入口文件')
+  }
+
   process.env.BABEL_ENV = 'production'
   process.env.NODE_ENV = 'production'
-  process.env.REACT_APP_PACKAGE = mode === 'prod' ? 'prod' : 'dev'
+  process.env.REACT_APP_PACKAGE = isProd ? 'prod' : 'dev'
 
   process.on('unhandledRejection', err => {
     throw err
   })
 
-  build()
-    .then(res => {
-      console.log('')
-      logger.succeed(res)
-      console.log('')
+  if (process.env.SKIP_PREFLIGHT_CHECK !== 'true') {
+    verifyPackageTree()
+  }
+
+  verifyTypeScriptSetup()
+
+  const measureFileSizesBeforeBuild = FileSizeReporter.measureFileSizesBeforeBuild
+  const printFileSizesAfterBuild = FileSizeReporter.printFileSizesAfterBuild
+
+  // These sizes are pretty large. We'll warn for bundles exceeding them.
+  const WARN_AFTER_BUNDLE_GZIP_SIZE = 512 * 1024
+  const WARN_AFTER_CHUNK_GZIP_SIZE = 1024 * 1024
+
+  const isInteractive = process.stdout.isTTY
+
+  // Generate configuration
+  const config = webpackConfig('prod')
+
+  // We require that you explicitly set browsers and do not fall back to
+  // browserslist defaults.
+  checkBrowsers(paths.appPath, isInteractive)
+    .then(() => {
+      // First, read the current file sizes in build directory.
+      // This lets us display how much they changed later.
+      return measureFileSizesBeforeBuild(paths.appBuild)
     })
+    .then(previousFileSizes => {
+      // Remove all content but keep the directory so that
+      // if you're in it, you don't end up in Trash
+      fs.emptyDirSync(paths.appBuild)
+      // Merge with the public folder
+      copyPublicFolder()
+      // Start the webpack build
+      return build(config, previousFileSizes)
+    })
+    .then(
+      ({ stats, previousFileSizes, warnings }) => {
+        if (warnings.length) {
+          console.log(chalk.yellow('Compiled with warnings.\n'))
+          console.log(warnings.join('\n\n'))
+          console.log(
+            '\nSearch for the ' +
+              chalk.underline(chalk.yellow('keywords')) +
+              ' to learn more about each warning.',
+          )
+          console.log(
+            'To ignore, add ' +
+              chalk.cyan('// eslint-disable-next-line') +
+              ' to the line before.\n',
+          )
+        } else {
+          console.log(chalk.green('Compiled successfully.\n'))
+        }
+
+        console.log('File sizes after gzip:\n')
+        printFileSizesAfterBuild(
+          stats,
+          previousFileSizes,
+          paths.appBuild,
+          WARN_AFTER_BUNDLE_GZIP_SIZE,
+          WARN_AFTER_CHUNK_GZIP_SIZE,
+        )
+        console.log()
+      },
+      err => {
+        const tscCompileOnError = process.env.TSC_COMPILE_ON_ERROR === 'true'
+        if (tscCompileOnError) {
+          console.log(
+            chalk.yellow(
+              'Compiled with the following type errors (you may want to check these before deploying your app):\n',
+            ),
+          )
+          printBuildError(err)
+        } else {
+          console.log(chalk.red('Failed to compile.\n'))
+          printBuildError(err)
+          process.exit(1)
+        }
+      },
+    )
     .catch(err => {
-      // 有moduleName时，FriendlyErrorsWebpackPlugin会帮我们显示错误信息
-      // 这里只打印其他错误内容
-      if (err && !err.moduleName) {
-        logger.error(err.message)
+      if (err && err.message) {
+        console.log(err.message)
       }
-      fs.remove(paths.appBuild)
+      process.exit(1)
     })
 }
 
-const build = () => {
+// Create the production build and print the deployment instructions.
+function build(config, previousFileSizes) {
+  console.log('Creating an optimized production build...')
+
   return new Promise((resolve, reject) => {
-    const config = webpackConfig('production')
-    const compiler = webpack(config)
-
-    compiler.run((err, stats) => {
+    webpack(config).run((err, stats) => {
+      let messages
       if (err) {
-        return reject(err)
+        if (!err.message) {
+          return reject(err)
+        }
+
+        let errMessage = err.message
+
+        // Add additional information for postcss errors
+        if (Object.prototype.hasOwnProperty.call(err, 'postcssNode')) {
+          errMessage += '\nCompileError: Begins at CSS selector ' + err['postcssNode'].selector
+        }
+
+        messages = formatWebpackMessages({
+          errors: [errMessage],
+          warnings: [],
+        })
+      } else {
+        messages = formatWebpackMessages(stats.toJson({ all: false, warnings: true, errors: true }))
+      }
+      if (messages.errors.length) {
+        // Only keep the first error. Others are often indicative
+        // of the same problem, but confuse the reader with noise.
+        if (messages.errors.length > 1) {
+          messages.errors.length = 1
+        }
+        return reject(new Error(messages.errors.join('\n\n')))
+      }
+      if (
+        process.env.CI &&
+        (typeof process.env.CI !== 'string' || process.env.CI.toLowerCase() !== 'false') &&
+        messages.warnings.length
+      ) {
+        // Ignore sourcemap warnings in CI builds. See #8227 for more info.
+        const filteredWarnings = messages.warnings.filter(
+          w => !/Failed to parse source map/.test(w),
+        )
+        if (filteredWarnings.length) {
+          console.log(
+            chalk.yellow(
+              '\nTreating warnings as errors because process.env.CI = true.\n' +
+                'Most CI servers set it automatically.\n',
+            ),
+          )
+          return reject(new Error(filteredWarnings.join('\n\n')))
+        }
       }
 
-      if (stats.hasErrors() && stats.toJson().errorsCount) {
-        return reject(stats.toJson().errors[0])
+      const resolveArgs = {
+        stats,
+        previousFileSizes,
+        warnings: messages.warnings,
       }
 
-      resolve(stats.toString({ chunks: false, colors: true }))
+      return resolve(resolveArgs)
     })
   })
 }

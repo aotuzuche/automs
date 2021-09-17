@@ -1,8 +1,8 @@
+const logger = require('@automs/tools/libs/logger')
 const updateTemplate = require('@automs/tools/scripts/updateTemplate')
 const askCreateQuestions = require('@automs/tools/scripts/askCreateQuestions')
 const checkIsWorkspace = require('@automs/tools/scripts/checkIsWorkspace')
 const createPageFiles = require('@automs/tools/scripts/createPageFiles')
-const logger = require('@automs/tools/libs/logger')
 const template = require('@automs/template')
 
 const main = async () => {

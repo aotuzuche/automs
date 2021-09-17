@@ -1,0 +1,3 @@
+path=/detail
+path=/aaaa/:id
+path=/:id

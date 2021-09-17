@@ -24,7 +24,8 @@ const updateTemplate = async () => {
 // 更新或创建模板文件
 const resetFile = (name, replaceDot = true) => {
   const template = path.resolve(
-    require.resolve('@automs/template').replace(/index\.js$/, ''),
+    require.resolve('@automs/template'),
+    '..',
     'init',
     replaceDot ? name.replace(/\./g, '_dot_') : name,
   )

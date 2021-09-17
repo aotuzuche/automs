@@ -49,7 +49,12 @@ const uploadOss = async (mode = 'prod') => {
     walk(paths.appBuild).then(files => {
       for (let f of files) {
         // 不上传html模板、map文件与assets.json文件
-        if (f.endsWith('index.html') || f.endsWith('.map') || f.endsWith('asset-manifest.json')) {
+        if (
+          f.endsWith('index.html') ||
+          f.endsWith('.map') ||
+          f.endsWith('asset-manifest.json') ||
+          f.endsWith('LICENSE.txt')
+        ) {
           continue
         }
 

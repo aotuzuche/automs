@@ -2,7 +2,10 @@
   "compilerOptions": {
     "rootDir": "src",
     "target": "es5",
-    "lib": ["es6", "dom"],
+    "lib": [
+      "es6",
+      "dom"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -14,18 +17,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "pretty": true,
     "baseUrl": "./",
-    "paths": {
-      "@/components/*": ["./src/components/*"],
-      "@/containers/*": ["./src/containers/*"],
-      "@/utils/*": ["./src/utils/*"],
-      "@/libs/*": ["./src/libs/*"],
-      "@/assets/*": ["./src/assets/*"],
-      "@/conf/*": ["./src/conf/*"],
-      "@/hooks/*": ["./src/hooks/*"]
-    }
+    "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }

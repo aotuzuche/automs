@@ -1,6 +1,8 @@
 const dotenv = require('dotenv')
 const dotenvExpand = require('dotenv-expand')
-const fs = require('fs')
+const fs = require('fs-extra')
+const os = require('os')
+const path = require('path')
 const paths = require('./paths')
 
 class env {
@@ -8,23 +10,30 @@ class env {
     // Make sure that including paths.js after env.js will read .env variables.
     delete require.cache[require.resolve('./paths')]
 
-    if (!fs.existsSync(paths.dotenv)) {
+    if (!fs.existsSync(paths.dotenv) || !fs.existsSync(paths.appNodeModules)) {
       return
     }
 
-    const baseEnv = dotenv.config({ path: paths.dotenv })
+    const envPath = path.resolve(paths.appNodeModules, '.automs', '.env')
+
+    try {
+      fs.removeSync(envPath)
+    } catch (_) {}
+
+    let envFile = String(fs.readFileSync(paths.dotenv))
 
     if (namespace === 'dev' && fs.existsSync(paths.dotenvDev)) {
-      const parsed = dotenv.config({ path: paths.dotenvDev }).parsed
-      baseEnv.parsed = { ...baseEnv.parsed, ...parsed }
+      envFile += os.EOL + String(fs.readFileSync(paths.dotenvDev))
     }
 
     if (namespace === 'test' && fs.existsSync(paths.dotenvTest)) {
-      const parsed = dotenv.config({ path: paths.dotenvTest }).parsed
-      baseEnv.parsed = { ...baseEnv.parsed, ...parsed }
+      envFile += os.EOL + String(fs.readFileSync(paths.dotenvTest))
     }
 
-    dotenvExpand(baseEnv)
+    fs.createFileSync(envPath)
+    fs.writeFileSync(envPath, envFile)
+
+    dotenvExpand(dotenv.config({ path: envPath }))
   }
 }
 
