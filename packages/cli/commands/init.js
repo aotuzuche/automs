@@ -17,6 +17,8 @@ const main = async () => {
       if (!ok) {
         return
       }
+      logger.spin('清空目录...')
+      logger.succeed()
       fs.removeSync(projectPath)
     }
 

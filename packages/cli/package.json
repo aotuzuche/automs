@@ -10,11 +10,7 @@
     "@automs/template": "^1.1.21",
     "@automs/tools": "^1.1.21",
     "@automs/webpack": "^1.1.21",
-    "at-js-bridge": "^1.0.60",
-    "auto-libs": "^0.3.62",
-    "dva": "^2.4.1",
-    "fs-extra": "^10.0.0",
-    "web-vitals": "^2.1.0"
+    "fs-extra": "^10.0.0"
   },
   "files": [
     "index.js",
